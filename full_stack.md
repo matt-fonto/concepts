@@ -52,12 +52,33 @@ Strategies:
 1. Vertical: increase the capacity of the server
 
    - Same server, but bigger
+   - Con: single point of failure and exponentially more expensive
 
 2. Read replicas: spin up one or more read-only copies
 
    - Writes go to primary
    - Reads come from "read-only"
+   - Con: can introduce lags
 
-3. Sharding
-4. Table partitioning
-5. Caching layer
+3. Sharding (horizontal): split db across multiple servers by key (user_id, region, etc)
+
+   - Each shard handles a subset of data & traffic
+   - Con: adds complexity (routing logic)
+
+4. Table partitioning: within a single server, break large tables into smaller ones
+5. Caching layer: Offload frequent lookups to external cache (Redis)
+
+   - Reduces db load and latency
+   - Need cache-invalidations to keep data fresh
+
+## 4. What are the different deployment types?
+
+1. Recreate (Big-bang): Tear down the old version, then deploy new one
+
+   - Simple, but causes downtime
+   - Difficult to rollback
+
+2. Rolling update: replaces instances in small batches
+
+- Traffic shifts gradually
+- Minimizes downtime and rollback scope
