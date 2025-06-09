@@ -80,5 +80,47 @@ Strategies:
 
 2. Rolling update: replaces instances in small batches
 
-- Traffic shifts gradually
-- Minimizes downtime and rollback scope
+   - Traffic shifts gradually
+   - Minimizes downtime and rollback scope
+   - Load balancer would take care of this distribution
+
+3. Blue-Green: Maintains two identical environments (blue & green)
+
+   - Deploy to the idle one, then flip traffic
+   - Instant rollback by switching back
+   - No downtime, but increased costs
+
+4. Canary release: Send a small percentage of traffic to the new version
+
+   - If metrics look good, ramp up rollout. If not, rollback
+   - Similar to blue-green, but more gradual. Send a bit of traffic to the new version
+
+5. A/B Testing: Like canaray, but compare two variants (A and B) to measure user response before committing
+
+6. Toggle-Feature (Dark Launch)
+
+   - Deploy code paths behind flags
+   - Enable features for internal users while code sits in prod. Flip the switch when you're ready
+
+## 5. How does the internet work?
+
+1. URL entry and parsing: When we type `https://example.com/path`, the browser divides that into:
+
+   - protocol: `https`
+   - domain: `example.com`
+   - port: default `443`
+   - path: `/path`
+
+2. DNS Resolution: The domain should be resolved into an IP address
+
+   - Domain Name System
+   - Table of names and IP addresses
+
+3. TCP & TLS handshakes
+
+   - TCP handshake: Your machine and server exchange `SYN`, `SYN-ACK`, `ACK` packets to establish a reliable connection
+   - TLS handshake (for HTTPS): your machine and server negotiate enctryption, exchange keys and verify certificates, so follow up data is private and authenticated
+
+4. HTTP request over IP
+   - Browser sends an HTTP request, split into TCP segments and IP packets
+   - Routers along the way forward packets based on IP headers until they reach the server network
