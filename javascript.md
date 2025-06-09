@@ -1,12 +1,14 @@
 # JavaScript
 
 1. Scope
+   1.1 var and const
+   1.2 hoisting
 2. Closure
 3. Event Loop
 4. Promises
 5. Module System
 
-## Scope
+## 1. Scope
 
 - Determines where you can access (read or write a variable)
 - They are: global, function, block
@@ -57,6 +59,18 @@ bar();
 console.log(y); // ReferenceError: y is not defined
 ```
 
+- Block: with ES6, `let` and const`are scope to the nearest`{...}` block (if, loop, etc)
+
+```js
+{
+  let a = 1;
+  const b = 2;
+  console.log(a, b); // 1 2
+}
+
+console.log(a, b); // ReferenceError: a is not defined
+```
+
 ```js
 let outerVar = "outer scope"; // module scope
 
@@ -86,3 +100,63 @@ middle scope
   }
 */
 ```
+
+### 1.1. let vs const
+
+- both are block scoped and unavaible before their declaration (the "TDZ" - temporal dead zone)
+
+```js
+{
+  console.log(z); // ReferenceError
+  let z = 3;
+}
+```
+
+#### `let` -> binding mutable
+
+1. can be reassigned
+
+```js
+let a = 1;
+a = 2; // ok
+a = "hey"; // ok
+```
+
+2. can be declared without initial value
+
+```js
+let x;
+x = 10;
+```
+
+#### `const` -> binding immutable
+
+Once a variable is declared with const, it becomes "read-only" (if primitive, arrays and objects can still have its inner values changed)
+
+1. can't be reassigned
+
+```js
+const a = 1;
+a = 2; // TypeError
+```
+
+2. must be declared with initial value
+
+```js
+const x; // SyntaxError
+const x = 10; //ok
+```
+
+3. A `const` binding can't change, but the value it points to can (mutating objects and arrays)
+   - binding: link between name (identifier) and the value it refers to in memory
+   - with const, binding is permanent. Once you do `const foo = 42`, you can't `foo = 99`
+     - Basically, after a variable is declared with `const`, it becomes `read-only`
+   - However, it doesn't mean the underlying values (properties is fronzen), only the name between name->value is. Thus, it's an object or array, you can still mutate its content
+
+```js
+const obj = { v: 1 };
+obj.v = 2; // property mutation allowed
+obj = {}; // cannot rebind
+```
+
+## 1.2. Hoisting
