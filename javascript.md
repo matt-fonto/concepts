@@ -160,3 +160,61 @@ obj = {}; // cannot rebind
 ```
 
 ## 1.2. Hoisting
+
+- Mechanism by which variable and function declarations are moved ("hoisted") to the top of their containing scope before code execution
+
+### Function
+
+- Entire function bodies are hoisted
+
+```js
+// we can call before its declaration
+sayHello(); // "hello"
+
+function sayHello() {
+  console.log("hello");
+}
+```
+
+### var
+
+- Only the declaration (not the initialization) is hoisted.
+- Variable is initialized to `undefined`
+
+```js
+console.log(count); // undefined, not ReferenceError
+var count = 5;
+console.log(count); // 5
+
+// basically, it's the same as
+var count;
+console.log(count); // undefined
+count = 5;
+console.log(count); // 5
+```
+
+### let and const
+
+- They are hoisted in concept, but reside in a Temporal Dead Zone (TDZ) until their line of declaration
+- Accessing them before declaration throws a `ReferenceError`
+
+```js
+console.log(x); // ReferenceError: can't access 'x' before initialization
+let x = 10;
+
+console.log(y); // ReferenceError
+const x = 10;
+```
+
+## 1.3 Temporal Dead Zone
+
+- Period during which a variable is declared but cannot be accessed
+- From the start of the block scope until the variable is initialized
+- Exists to prevent potential bugs caused by premature access
+- `var`, `let` and `const` are hoisted, but `let` and `const` behave differently
+
+  - `var`: stored in the global object. Can be accessed before initialization, but with `undefined` value
+  - `let` and `const`: stored in the script or TDZ
+
+- It was created to enforce safer coding practices
+  ![alt text](image.png)
