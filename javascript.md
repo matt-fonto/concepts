@@ -218,3 +218,35 @@ const x = 10;
 
 - It was created to enforce safer coding practices
   ![alt text](image.png)
+
+## 2. Closure
+
+- Gives a function access to its outer scope
+- In JS, we have access to the to "upward" scope. The grandchild has access to the parent and grandparent scope
+
+```js
+const name = "Matt";
+
+function printName() {
+  // we're using a variable from outside the function here
+  // name variable, even though declared outside, is available within the function scope
+  console.log(name);
+}
+
+printName(); // it will always get the most recent value of that variable
+```
+
+```js
+function outerFunc(outerVariable) {
+  return function innerFunc(innerVariable) {
+    console.log("outer variable", outerVariable); // it "saves" the outer variable, even if the function `outerFunc` has finished executing
+    console.log("inner variable", innerVariable);
+  };
+}
+
+const newFunction = outerFunc("outside"); // we call the function
+newFunction("inside"); // we get the inner func
+
+// outer variable outside
+// inner variable inside
+```
