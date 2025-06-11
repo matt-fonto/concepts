@@ -244,9 +244,44 @@ function outerFunc(outerVariable) {
   };
 }
 
-const newFunction = outerFunc("outside"); // we call the function
+const newFunction = outerFunc("outside"); // we call the function and "save" the innerFunc reference by saving it to a variable on the outside scope (not garbage-collected)
 newFunction("inside"); // we get the inner func
 
 // outer variable outside
 // inner variable inside
 ```
+
+## 3. Execution Contexts
+
+- The environment in which JavaScript code is executed
+- It's an abstract "container" that holds everything needed to evaluate and execute the code
+- Types:
+  - 1. Global context
+    - created once the script loads
+    - Its variable object is the `global` (in browsers, `window`)
+  - 2. Function context
+    - created when a function is invoked
+    - each call gets its own context
+  - 3. Eval context (rare)
+    - created when you execute `eval(...)`
+  - 4. Block context (ES6+)
+    - create for `{...}` when you use `let`/`const`
+
+### Lifecycle
+
+1. Creation phase: Sets up the environment for the code to be executed
+
+- Variable object (VO): Contains all variables and functions that are defined in the current scope
+
+  - Function arguments, function declarations, and variable declarations
+  - Used to resolve identifiers to their values during execution
+
+- Scope chain: list of variable objects that are accessible in the current scope
+
+2. Execution phase: JS executes the code line by line
+
+- Code runs line by line
+- Variables get assigned
+- Functions execute
+
+## 4. Event Loop
