@@ -374,3 +374,36 @@ queueMicrotask(() => {
 
 console.log(5);
 ```
+
+## 6. Promises
+
+- Object that will resolve in the future
+- They were created to avoid callback hell, where we pass a function inside a function, which is itself inside a function, ad nauseam
+  - Before Promises (ES6), JS handled async code entirely via callbacks
+  - Promises avoid deeply nested code, making the code less error-prone, predictable, and chainable
+- async/await is syntatic sugar. Under the hood, it's the same
+
+```js
+{
+  state: "pending",
+  resolve: function() {
+    this.state = "fulfilled";
+  },
+  reject: function() {
+    this.state = "rejected";
+  }
+}
+```
+
+## 7. The module system
+
+- JS started as tiny scripts on webpages, so everything lived in the global scope. As apps grew, this became problematic
+
+  - Name collisions
+  - Poor encapsulation
+  - Unpredictable load order
+
+- Module system allows us to:
+  - encapsulate code
+  - reuse code
+  - import and export functionality
