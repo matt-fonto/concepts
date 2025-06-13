@@ -285,3 +285,82 @@ newFunction("inside"); // we get the inner func
 - Functions execute
 
 ## 4. Event Loop
+
+- Let's a single-threaded runtime handle async tasks non-blockingly
+- Since JS is single-threaded, long tasks can't block it. So, we use the "event loop" to offload the thread
+- The event loop, itself, is part of the ecosystem of mechanisms that JS has to handle "concurrent/async" tasks, even though it's single-threaded
+  - 1. Call stack: where the sync code runs
+  - 2. Task queues:
+    - Macrotask queue (aka, "callback queue"): setTimeout, DOM events, I/O callbacks
+    - Microtask: promise-callbacks (then/catch), queueMicroTask, MutationObserver
+  - 3. Event Loop
+    - Checks if the call stack is empty, if it is, it:
+      - checks if the microtask has any task. In case yes, it sends to the call stack. If no, it checks the macrotasks
+
+```js
+console.log("start");
+
+setTimeout(() => console.log("timeout"), 0);
+
+Promise.resolve().then(() => console.log("promise"));
+
+console.log("end");
+
+/* 
+output
+start
+end
+promise -> microtask -> runs when callstack is empty
+timeout -> macrotask -> runs only after the callstack and microtasks are empty
+*/
+```
+
+1. Every time we call a function, we throw it into the call stack (LIFO)
+2. Once the task has finished processing, it's added to the queue (FIFO) and once the call stack is free, it will be added there.
+   - Meanwhile, it "sits" there, waiting.
+
+## 5. JavaScript Runtime
+
+Composed of:
+
+- JavaScript Engine
+  - Call stack
+  - Heap
+- Event loop
+- Web APIs
+- Task queue (aka, MacroTask Queue)
+- Microtask queue
+  ![alt text](image-1.png)
+
+```js
+console.log("one"); // 1
+
+console.log("one"); // 2
+
+function log3() {
+  console.log("three"); //5
+}
+
+function log3and4() {
+  log3(); //4
+  console.log("four"); //6
+}
+
+log3and4(); //3
+```
+
+```js
+Promise.resolve().then(() => console.log(1));
+
+setTimeout(() => console.log(2), 10);
+
+// queueMicrotask: method of the `window` interface
+queueMicrotask(() => {
+  console.log(3);
+  queueMicrotask(() => {
+    console.log(4);
+  });
+});
+
+console.log(5);
+```
