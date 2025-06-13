@@ -292,7 +292,7 @@ newFunction("inside"); // we get the inner func
   - 1. Call stack: where the sync code runs
   - 2. Task queues:
     - Macrotask queue (aka, "callback queue"): setTimeout, DOM events, I/O callbacks
-    - Microtask: promise-callbacks (then/catch), queueMicroTask, MutationObserver
+    - Microtask: promise-callbacks (then/catch | async/await), queueMicroTask, MutationObserver
   - 3. Event Loop
     - Checks if the call stack is empty, if it is, it:
       - checks if the microtask has any task. In case yes, it sends to the call stack. If no, it checks the macrotasks
@@ -315,11 +315,21 @@ timeout -> macrotask -> runs only after the callstack and microtasks are empty
 */
 ```
 
-1. Every time we call a function, we throw it into the call stack (LIFO)
-2. Once the task has finished processing, it's added to the queue (FIFO) and once the call stack is free, it will be added there.
-   - Meanwhile, it "sits" there, waiting.
+### What goes to macro and micro task queues?
 
-## 5. JavaScript Runtime
+- Macro (timers and "lower-priority" tasks)
+
+  - setTimeout/setInterval
+  - I/O callbacks
+  - DOM Events (click, load, etc)
+  - UI rendering and paint callbacks
+
+- Mixcro (promises and "higher-priority" tasks)
+  - Promise callbacks (then, catch, finally)
+  - async/await
+  - queueMicrotask(fn)
+
+## 5. JavaScript Runtime - To Learn more
 
 Composed of:
 
