@@ -1,13 +1,5 @@
 # JavaScript
 
-1. Scope
-   1.1 var and const
-   1.2 hoisting
-2. Closure
-3. Event Loop
-4. Promises
-5. Module System
-
 ## 1. Scope
 
 - Determines where you can access (read or write a variable)
