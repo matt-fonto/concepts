@@ -60,3 +60,31 @@
 - A complete rewrite of React's conciliation engine, using "fiber" nodes instead of plain recursion
 - Splits work into small units, supports scheduling (prioritizing, pausing, resuming) and time-slicing for smoother UIs
 - Fiber nodes form a linked structure (`child`/`sibling`/`return` pointers) enabling incremental diffing, whereas the classic Virtual DOM diff was a single sync pass
+- It divides the rendering working into smaller parts, konwn as `fibers`
+
+#### Before React Fiber
+
+- React used the `Stack Reconciler`
+
+  - changes applied synchronously
+  - state, prop changes, React'd traverse the entire component tree. Compare with previous tree, and apply changes on the DOM, in one go.
+
+- `Fiber Reconciler`
+  - work is done incrementally
+  - React can start and pause work
+  - Improved performance and reaction rate
+
+#### Main Concepts React Fiber
+
+1. Incremental rendering
+
+   - Priority-based updates
+     - high-priority: user interaction
+     - low-priority: data fetching (background)
+
+2. Concurrency
+
+   - React fiber is still single-threaded, but it schedules tasks on event loop
+
+3. Tree Structure
+   - Tree of fibers, in which every UI items has: state, data, and hierarchy position
