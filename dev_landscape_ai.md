@@ -22,3 +22,19 @@
        - Creating entire system that enables continuous delivery of value to users
        - Containers, Kubernetes, Cloud Services, CI/CD
    - AI can spill out code, but it can't make architectural decisions, least of all implement them safely
+
+3. Creating Measurable Business Impact
+
+   - How did your technical work influence the business?
+     - Present your solutions from a business-value perspective
+   - Connect your technical implementation to business outcomes
+
+4. Leveraging AI tools to supercharge productivity
+
+   - Develop a workflow that combines AI assistance + Human/Engineering/Business decision-making
+
+## Pitfalls to avoid
+
+- AI Tools will continue to improve at generating code
+- Learn how to connect the code with systems, architecture, and business outcomes
+- AI should handle routine tasks, while you focus on judgement, design and business alignment
