@@ -35,4 +35,28 @@
   - Uses diff algorithms to compare the current and previous versions
   - Re-renders only the parts of the UI that have changed, instead of the whole thing
 
+#### Benefits of VDOM
+
+1. Simplified development
+
+   - Declarative style
+   - Describe what the UI should look like, React takes care of the test
+   - Allowed React's declarative syntax and its component-based architecture
+
+2. Improvement performance
+
+   - Manipulating the Real DOM is expensive and takes a while, while the VDOM makes this more performatic
+
+3. Enhanced User Experience
+
+   - Updates are smooth, without full-page refreshes
+
+4. Cross-platform development
+   - React Native uses a similar approach
+
 ### React Fiber
+
+- Introduced in React 16
+- A complete rewrite of React's conciliation engine, using "fiber" nodes instead of plain recursion
+- Splits work into small units, supports scheduling (prioritizing, pausing, resuming) and time-slicing for smoother UIs
+- Fiber nodes form a linked structure (`child`/`sibling`/`return` pointers) enabling incremental diffing, whereas the classic Virtual DOM diff was a single sync pass
