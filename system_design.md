@@ -71,9 +71,14 @@
   - state, prop changes, React'd traverse the entire component tree. Compare with previous tree, and apply changes on the DOM, in one go.
 
 - `Fiber Reconciler`
+
   - work is done incrementally
   - React can start and pause work
   - Improved performance and reaction rate
+
+- It's the new (React 16) VDOM reconciler
+  - We still build the Virtual DOM tree, but under the hood we reconcile it through Fiber, not the Stack Reconciler
+  - The way React processes VDOM
 
 #### Main Concepts React Fiber
 
@@ -108,3 +113,31 @@
     - Pause work, discard it, return to it, etc
   - commit phase: `commitWork()` is called
     - Sync and it can't be interrupted
+
+## 2. Reconciliation process
+
+- React's process of updating UI by diffing the new, updated element tree against the previous one
+
+1. Render (diff) phase
+
+   - Builds work units: React creates a Fiber tree representign the new elements
+     - Links them via `child`/`sibling` pointers
+   - Compare nodes:
+     - Type change: tear down old subtree and mount new
+     - Same type with key: reuse the DOM node, update props
+     - List with keys: match by key to reorder, insert, or delete only what changed
+   - Prioritize work: Pause and resume diffing based on priority
+
+2. Commit Phase
+   - Apply mutations: React walks the completed fiber tree and:
+     - inserts, updates, or removes real DOM nodes
+     - Run lifecycle effects `useLayoutEffect` synchronously after DOM updates
+     - Runs passive effects `useEffect` asynchrounously after paint
+
+### The importance of `unique key` in mapped elements
+
+- Allows React to match elements between renders to apply minimal updates
+- Using stable, unique keys ensures consistency
+- If indexes are used, list changes order, removed/added items, can confuse React
+  - Can also cause unnecessary re-renders
+- Unique ids also help in performatic diffing
