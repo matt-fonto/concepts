@@ -141,3 +141,32 @@
 - If indexes are used, list changes order, removed/added items, can confuse React
   - Can also cause unnecessary re-renders
 - Unique ids also help in performatic diffing
+
+### Reconciliation priorities
+
+**High-prio** (blocking tasks): processed sync or with very small yields between units so the uI never feels sluggish
+
+- Immediate updates `ImmediatePriority`
+  - Rare
+  - ReactDOM flushing after `flushSync()`
+  - Urgent imperative calls made via API
+- User-blocking updates `UserBlockingPriority`
+  - User input (click, keystrokes, touches)
+
+**Medium-prio** (normal taks): run between `user-blocking` work, but before background. React time-slices them to keep the app responsive
+
+- Data-driver renders `NormalPriority`
+  - State updates from network responses or non-critial prop changes
+  - Typical setState calls inside effects or async callbacks
+
+**Low-prio** (background tasks): Can be paused for any higher-priority and resumed later
+
+- Offscreen/preload renders `LowPriority`
+  - Render content not currently visible (hidden routes, tabs)
+  - Pre-fetching components or data you anticipate needing soon
+
+**Idle-prio**: Executed only when the browser is otherwise idle
+
+- Housekeeping `IdlePriority`
+  - Logging, analytics, cache eviction
+  - Anything in `requestIdleCallback`
