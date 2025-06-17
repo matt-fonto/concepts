@@ -170,3 +170,19 @@
 - Housekeeping `IdlePriority`
   - Logging, analytics, cache eviction
   - Anything in `requestIdleCallback`
+
+## 3. Diffing Algorithm and Virtual Dom
+
+- Performs a shallow, O(n) comparison of the old and new VDOM trees using 3 principles
+
+1. Component type
+   - If two nodes have different types (`Button` and `Link`), React unmounts the old subtree and mounts new one
+   - If they're the same type, it reuses the underlying DOM node or component instance
+2. Props and text
+   - For same-type nodes, React compares `props` and `text content`, updating only what changed (attributes, event listeners, text)
+3. List reconciliation with keys
+   - When diffing children arrays, React matches items by their keys:
+     - Stable, unique keys -> direct mapping, minimal moves
+     - No key or index key -> fallback to index-based matching, which leads to unnecessary unmounts/remounts
+
+- It only compares threes level-by-level, this way React keeps diffing linear, rather than quadratic or worse
