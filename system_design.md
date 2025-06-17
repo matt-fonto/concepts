@@ -21,6 +21,7 @@
    - It diffs the two versions
 4. Reconciliation: Based on the differences identified, React determines the most efficient ways to update the RDOM
    - Only the parts that need to be changed are, rather than updating the whole RDOM
+   - Reconciliation is the way through which React brings the UI up to date with the state of the application data
 5. Update the RDOM: React applies the changes
    - Adding, removing, updating elements based on diffs
 
@@ -81,6 +82,9 @@
    - Priority-based updates
      - high-priority: user interaction
      - low-priority: data fetching (background)
+   - Can split the work into chunks and prioritize tasks
+   - Can pause work and come back to it later
+   - It's async
 
 2. Concurrency
 
@@ -88,3 +92,19 @@
 
 3. Tree Structure
    - Tree of fibers, in which every UI items has: state, data, and hierarchy position
+
+#### How React Fiber works
+
+- Fiber is just a plain JS object with some properties
+- Fiber also represents a unit of work
+- React processes the fibers (units of work) and we end up with something called `finishwork()`
+
+  - Then it commits this work, resulting in DOM changes
+
+- 2 phases
+  - render phase: processing of fibers happens
+    - Async
+    - Prioritize tasks
+    - Pause work, discard it, return to it, etc
+  - commit phase: `commitWork()` is called
+    - Sync and it can't be interrupted
