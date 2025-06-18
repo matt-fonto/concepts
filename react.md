@@ -176,15 +176,85 @@
 - Performs a shallow, O(n) comparison of the old and new VDOM trees using 3 principles
 
 1. Component type
+
    - If two nodes have different types (`Button` and `Link`), React unmounts the old subtree and mounts new one
+
+   > Elements of different types will produce different trees
+
    - If they're the same type, it reuses the underlying DOM node or component instance
+
 2. Props and text
    - For same-type nodes, React compares `props` and `text content`, updating only what changed (attributes, event listeners, text)
 3. List reconciliation with keys
+
    - When diffing children arrays, React matches items by their keys:
      - Stable, unique keys -> direct mapping, minimal moves
      - No key or index key -> fallback to index-based matching, which leads to unnecessary unmounts/remounts
 
+   > Assume keys are stable and unique
+
 - It only compares threes level-by-level, this way React keeps diffing linear, rather than quadratic or worse
 
-<!-- video 10:29 -->
+## 4. Controlled vs Uncontrolled Components
+
+- Controlled: React controls the from inputs by keeping the current value in the state
+  - Form elements that are managed by React state
+  - Changes go through React
+  - State: single source of truth
+  - When to use it?
+    - Instant validation or conditional submit disabling
+    - Format/transform input as the user types
+    - Must sync inputs with other UI
+
+```jsx
+function ControlledForm() {
+  const [name, setName] = useState("");
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        alert(name);
+      }}
+    >
+      <label>
+        Name: // state is controlled by react
+        <input value={name} onChange={(e) => setName(e.target.value)} />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+- Uncontrolled: The DOM "controls" its own state
+  - Read values via ref
+  - React doesn't re-render on every keystroke
+  - When to use it?
+    - Simple forms where you don't need to respond to every change
+    - Avoid performance overhead of rerendering on each keystroke
+
+```jsx
+function UncontrolledForm() {
+  const nameRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(nameRef.current.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Name:
+        <input defaultValue="Alice" ref={nameRef} />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+- Rule of thumb:
+  - Default to controlled for most text-input use cases (full power over state and UX)
+  - Choose uncontrolled for simplicity, performance, or integration with non-React form elements
