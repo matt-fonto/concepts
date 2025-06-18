@@ -208,7 +208,7 @@
 
 ```jsx
 function ControlledForm() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(""); // 2. -> name state is updated
 
   return (
     <form
@@ -219,7 +219,10 @@ function ControlledForm() {
     >
       <label>
         Name: // state is controlled by react
-        <input value={name} onChange={(e) => setName(e.target.value)} />
+        <input
+          value={name} // -> 3. input reads from (updated) state
+          onChange={(e) => setName(e.target.value)} // 1. -> user types -> setName is called
+        />
       </label>
       <button type="submit">Submit</button>
     </form>
@@ -258,3 +261,28 @@ function UncontrolledForm() {
 - Rule of thumb:
   - Default to controlled for most text-input use cases (full power over state and UX)
   - Choose uncontrolled for simplicity, performance, or integration with non-React form elements
+
+## 5. Hooks
+
+1. State hooks: manage state
+
+   - useState
+   - useReducer
+
+2. Context hooks: use data passed through context
+
+   - useContext
+
+3. Reference hooks: references HTML
+
+   - useRef
+
+4. Effect/Lifecycle hooks: external systems, e.g., browser APIs. Code that "reaches outside" of React apps
+
+   - effect hooks -> better called in "event handlers"
+   - useEffect
+
+5. Performance hooks: Improve app performance
+
+   - useMemo -> memoizing operations
+   - useCallback -> memoizing functions
