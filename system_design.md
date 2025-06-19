@@ -46,3 +46,26 @@
 - Fail fast & Graceful degradation: detect problems early; degrade non-critical features
 - CAP Awareness: Know that every system has trade-offs among Consistency, Availability, and Partition Tolerance
 - Evolve with Telemetry: real-world usage guide optmizations and refactoring
+
+## 4. Design Principles in System Design
+
+1. Separation of concerts: small, self-contained modules
+   - Reduced reliance on other modules
+   - Scale or replace particular components without having (having minimum) ripple effects
+2. Encapsulation and abstraction
+   - Information hiding
+   - Minimizing complexity
+3. Loose coupling and High cohesion
+   - Modules should be independent and change in one shouldn't affect the others
+   - Elements are related, but not dependent
+   - Rely on interfaces
+4. Scalability and performance
+   - Scaling
+     - horizontal: increasing the number of instances (add more instances, nodes)
+     - vertical: increasing the power of specific instance (raising resource of one node)
+   - Performance
+     - load balancing, caching, async processing
+5. Resilience to Fault tolerance
+   - Redudancy, replication, fault detection
+   - Systems that survive component failures
+6. Security and privacy
