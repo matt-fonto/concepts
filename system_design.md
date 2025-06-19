@@ -69,3 +69,38 @@
    - Redudancy, replication, fault detection
    - Systems that survive component failures
 6. Security and privacy
+
+## 5. Main concepts
+
+1. Vertical scaling: Add more resource to a node
+   - Single-point of failure
+   - Simpler
+2. Horizontal scaling: Add more nodes
+   - Replicas
+   - Redundancy
+   - Fault tolerance
+3. Load balancer: Reverse-Proxy
+   - Round robin: balances request across servers
+   - Hashing
+4. Content Delivery Network (CDN)
+   - Network of servers located around the world
+   - Copies files from "origin server" to "distributed server" across the world
+5. Caching: Creating copies of data that can be fast accessed
+   - CDNs are a technique for caching
+   - Accessing data on the internet can be expensive, so:
+     1. Our computers cache data on memory.
+     2. Hard-disk memory can be expensive, so our computers cache data on RAM memory
+     3. RAM memory can be expensive, so our computers cache data CPU
+6. TCP/IP: How data is sent reliably across the network
+   - Files are broken down into packets
+   - Packets are numbered and once they get to the destination, they are assembled again
+     - Like a puzzle
+   - Network-layer
+7. Domain Name System: Large database of IP and domain name
+8. HTTP: Hypertext Transfer Protocol. How servers and clients communicate
+   - Application layer
+   - Request-header: a label that is sent on the box
+     - Who sent it
+     - Who receives it
+     - Some info about the package itself
+   - Request body: the content of the box itself
