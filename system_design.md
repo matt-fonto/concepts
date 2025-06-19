@@ -104,3 +104,31 @@
      - Who receives it
      - Some info about the package itself
    - Request body: the content of the box itself
+9. WebSockets: Bidirectional communication
+   - Communication protocol
+   - Real-time, bidirectional data exchange
+     - Full-duplex
+     - Connection remains open for as long as needed
+     - Similar to HTTP, also built on top of TCP
+     - Connection is established through a handshake (HTTP header), then upgraded to WebSocket
+   - HTTP: Request-response based
+   - Websocket: continuous communication
+10. ACID
+    - Atomicity
+    - Consistency
+    - Isolation
+    - Durability
+11. Sharding: Breaking pieces of the database into other nodes
+    - Horizontal scale
+12. Replication
+    1. Leader-Follower Replication
+    - Write -> sent to the leader
+      - Leader replicates that to the follower
+    - Read -> sent either to the leader or followe
+    2. Leader-Leader Replication
+13. CAP Theorem
+    - Consistency, Availability, Partition (Network)
+    - Pick 2 of 3
+14. Message Queues
+
+"Wait, it's all just moving and storing data?" "Always has been"
