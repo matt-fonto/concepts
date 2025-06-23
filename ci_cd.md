@@ -66,11 +66,21 @@ CI Pipeline
 
 5. Artifact repo
 
-CD Pipeline
+Continuous delivery
 
 6. Deploy to Dev
 7. Integration + Security
+
+Continuous deployment
+
 8. Deploy to staging
+
+- Performance test
+- Compliance check
+- Security test
+
+- Beyond the automated points above, here, we can have a human in the loop (Project Manager) that tests the features. Shows it to business decision makers
+
 9. Deploy to production
 
 - Through automated pipeline, we get:
@@ -78,3 +88,18 @@ CD Pipeline
   - no code freezes
   - more reliable software
   - less errors
+
+## 4. Deployment strategies
+
+1. Canary deployment: Progressive deployment of an application
+
+   - Deploying the software for 1%, 5% of users
+   - If nothing went wrong, gradually roll out for more users
+   - Load balancer
+     - Most nodes (old version)
+     - Canary node (releasing the new feature)
+     - We progress until all nodes have the new content
+
+2. Blue-green deployment: Two different servers, one with current, the other with new changes
+   - We switch from one to the other
+   - If something goes wrong, just roll back to previous version
