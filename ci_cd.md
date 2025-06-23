@@ -1,6 +1,6 @@
 # CI/CD
 
-## Continuous Integration
+## 1. Continuous Integration
 
 Changes should be kept small and integrated regurlarly
 
@@ -30,3 +30,51 @@ Changes should be kept small and integrated regurlarly
 3. Build and test -> Checks the code, installs deps, runs linters, compiles/bundles assets and executes unit/integration tests
 4. Report & Enforece -> Results (pass/fail, coverage metrics, code-quality alerts) are posted back to the PR
    - Failing pipelines block merges until issues are solved
+
+## 2. Continuous Deployment
+
+- Once the code passes the CI workflow, if it's alright, then build it
+
+  - After successful tests:
+    - Build Docker image
+    - Push to Docker Registry (new artifact created)
+    - Connect to server/cluster (dev environment)
+    - Run Docker container
+
+- Where we deploy validated artifcates to staging or prod environments
+- Besides deploying it to DEV, we can:
+  - Run E2E tests
+  - DAST Scans
+
+### Dev E2E Tests
+
+- Run extensive tests on the running system
+
+1. Click UI
+2. Call API
+3. Update DB
+4. Confirm on UI
+
+## 3. CI/CD Pipeline
+
+CI Pipeline
+
+1. Build
+2. Unit tests
+3. Package
+4. Integration tests
+
+5. Artifact repo
+
+CD Pipeline
+
+6. Deploy to Dev
+7. Integration + Security
+8. Deploy to staging
+9. Deploy to production
+
+- Through automated pipeline, we get:
+  - more focus on building, less on deploying
+  - no code freezes
+  - more reliable software
+  - less errors
