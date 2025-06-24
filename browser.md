@@ -109,3 +109,13 @@
       - Because JS manipulates the DOM and CSS, therefore it must have priority
 - CSS -> CSSOM tree
 - DOM + CSSOM = Render tree, drives layout and painting
+
+## 3. Putting it all together
+
+1. User enters URL -> UI tells the browser engine
+2. Networking -> fetches assets (HTML/CSS/JS)
+3. Parser -> builds DOM/CSSOM
+4. Render engine -> layouts and paints
+5. JS engine -> runs scripts, which can trigger style/layout/paint again
+6. UI backend -> creates final layers to screen
+7. Storage -> manages any persisted data
