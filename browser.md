@@ -5,19 +5,71 @@
   - Display data
   - Allow you to interact with data
 
-## 1. Architecture
+## 1. Architecture | Browser Components
 
-- UI (address bar, back/forward buttons)
-- Browser engine (glue between UI and rendering)
+### 1. UI (address bar, back/forward buttons): Address bar, navigation controls, tabs
 
-  - Rendering engine (parses HTML/CSS into pixels)
-    - Responsible for HTML and CSS
-    - Most of the rendering engines are written in C++
-  - JavaScript Engine (parses, compiles and runs JS)
-    - Curiously, JS engine doesn't have timers. Therefore, setTimeout, setInterval are APIs that JS "borrows" from the browser
+- Handles all user input (URL entry, clicks) and displays output (page view, status indicators)
+- Manages window- and tab-level state (e.g. history stack, bookmarks)
 
-- Networking (HTTP/TLS requests)
-- Storage (cookies, localStorage, sessionStorage, indexedDB)
+### 2. Browser engine (coordinator):
+
+- Acts as a glue between UI and rendering
+- Receives UI commands (e.g. "load URL") and orchestrates: networking, parsing, layout, scripting, paiting
+
+### 3. Rendering engine (parses HTML/CSS into pixels): Composed of networking, HTML/CSS Parsing and painting, JS engine
+
+- Responsible for HTML and CSS
+- Most of the rendering engines are written in C++
+- Most popular rendering engines are:
+
+  - Blink: Chrome, Edge, Opera. Based on Webkit
+  - WebKit: Safari
+  - Gecko: Mozilla
+
+#### 3.1. Networking (HTTP/TLS requests)
+
+- DNS lookup & TCP/TLS handshake
+- HTTP(s) request/response:
+
+  - Connection pooling, caching (`Cache-Control` headers), cookies
+  - Delivers raw HTML, CSS, JS, images and assets to the parser layers
+
+#### 3.2 HTML/CSS Parsing & paiting
+
+1. HTML Parsing -> Builds DOM tree
+2. CSS Parsing -> Builds CSSOM
+3. Render Tree -> Merges DOM + CSSOM, omitting invisible nodes and applying styles
+4. Layout (Reflow) -> Calculates geometry (position/sizes)
+5. Painting (Rasterization) -> Converts layout into pixel buffers via the UI backend
+
+#### 3.3 JavaScript Engine (parses, compiles and runs JS)
+
+- Curiously, JS engine doesn't have timers. Therefore, setTimeout, setInterval are APIs that JS "borrows" from the browser
+- Parses, compiles (often with JIT - Just in Time), and executes JS code
+- Implements garbage collection, inline caching, and optimizing compilers
+- Exposes Web APIs (`fetch`, `setTimeout`) via the browser
+- Most popular JS engines:
+
+  - V8 (C++): Chrome and Edge
+  - SpiderMonkey (C/C++): Mozilla
+  - JavaScriptCore (Nitro): Safari
+
+#### 3.4 UI Backend
+
+- Abstract layer that takes painted pixel buffers and blits them on-screen
+- Interfaces with the OS's windowing and graphics subsystems (e.g. CPU compositing)
+- Responsible for drawing basic GUI elements (buttons, inputs, windows) on screen
+
+### 4. Storage (cookies, localStorage, local cache)
+
+- Cookies: key-value pairs sent with HTTP requests
+- Web storage: `localStorage` and `sessionStorage`
+- IndexedDB: Async, structured object store for larger data
+- Cache API: Programmitic caching of request/response pairs
+- HTTP Cache: managed by networking layer for static assets, respecting cache-control headers
+
+![alt text](image-2.png)
 
 ## 2. Render Tree
 
