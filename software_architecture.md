@@ -72,3 +72,33 @@
   - Performance overhead from many hops
 
 #### 2. Client-Server
+
+- Clients request services and servers host resources
+- State can be centralized (server-centric) or distributed (stateful clients)
+- Example: Browser fetching REST APIs from a backend server
+- Pros:
+
+  - Centralized control and security
+  - Thin clients; easier updates
+  - Scales reads by adding servers behind a load-balancer
+
+- Cons:
+
+  - Server can be a single point of failure
+  - Overloaded servers lead to poor UX
+  - Requires careful versioning for backward compatibility
+
+#### 3. Microservices
+
+- Suite of small, independently deployable services, each owning its data and focuses on a single business capability
+- Communicate through lightweight protocols (HTTP, messaging)
+- Example: E-commerce where separate carts, orders, payments, inventory services are all difference small services
+- Pros:
+
+  - Deployable and scalable independent services
+  - Fault isolation limits blast radius. If one service fails, it's alright
+
+- Cons:
+  - Operational complexity (CI/CD, monitoring, distributed tracing)
+  - Data consistency across services is harder
+  - Network latency and versioning become trickier
