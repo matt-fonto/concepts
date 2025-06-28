@@ -55,6 +55,7 @@
     - Generated while DOM tree is constructed
     - Visual elements in the order which they're going to be displayed
     - Elements in the render tree are called renderer/render objects
+      - These objects are literally rectangles
     - Switch case if DOM element needs to be displayed and how
       - Render none, inline, block, inline-block, list-item
 
@@ -65,6 +66,14 @@
     - Recursively begins at root object <html>
 
   - Paint
+
+    - Traverses the render tree and applies `paint()` method to paint the rectangles
+    - Order
+      - background color
+      - background image
+      - border
+      - children
+      - outline
 
 #### 3.1. Networking (HTTP/TLS requests)
 
