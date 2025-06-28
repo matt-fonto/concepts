@@ -102,3 +102,20 @@
   - Operational complexity (CI/CD, monitoring, distributed tracing)
   - Data consistency across services is harder
   - Network latency and versioning become trickier
+
+#### 4. Event-driven
+
+- Components communicate by emitting and consuming events via a broker or bus, enabling async decoupling
+- Example: Order service emits "OrderPlaced" -> Inventory & Shipping services react
+- Pros:
+
+  - Highly decoupled, easy to add subscribers
+  - Natural fit for real-time, reactive flows
+  - Can buffer/load-level event during spikes
+
+- Cons:
+  - Harder to trace events, tougher to reason about end-to-end flows
+  - Testing, debugging async paths is tougher
+  - Challenges in data consistency
+
+#### 5. Serverless / FaaS (Function as a service)
