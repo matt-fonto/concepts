@@ -17,7 +17,7 @@
 - Acts as a glue between UI and rendering
 - Receives UI commands (e.g. "load URL") and orchestrates: networking, parsing, layout, scripting, paiting
 
-### 3. Rendering engine (parses HTML/CSS into pixels): Composed of networking, HTML/CSS Parsing and painting, JS engine
+### 3. Rendering engine (parses HTML/CSS/JS): Composed of networking, HTML/CSS Parsing and painting, JS engine
 
 - Responsible for HTML and CSS
 - Most of the rendering engines are written in C++
@@ -26,6 +26,45 @@
   - Blink: Chrome, Edge, Opera. Based on Webkit
   - WebKit: Safari
   - Gecko: Mozilla
+
+### 3.0 Basic rendering engine flow
+
+- Parsing -> Render tree -> Layout -> Paint
+
+  - Parsing: Translating a docucument into a structure that code can use
+
+    - Grammar
+
+      - vocabulary: keyterms
+      - syntax rules: how vocabulary interacts
+      - Lexical analysis
+      - Syntax analysis
+      - Lexer (Tokenizer): create tokens
+      - Parser: applies syntax rules
+        - Existing Parses: Flex, Lex, Yacc, Bison
+
+    - Types of parser
+
+      - Conventional
+        - CSS and JS
+      - Unconventional
+        - HTML
+
+  - Render Tree
+
+    - Generated while DOM tree is constructed
+    - Visual elements in the order which they're going to be displayed
+    - Elements in the render tree are called renderer/render objects
+    - Switch case if DOM element needs to be displayed and how
+      - Render none, inline, block, inline-block, list-item
+
+  - Layout/Reflow
+
+    - Calculators position and size
+    - Mostly, geometries are computed in one pass
+    - Recursively begins at root object <html>
+
+  - Paint
 
 #### 3.1. Networking (HTTP/TLS requests)
 
