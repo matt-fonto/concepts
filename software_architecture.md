@@ -14,6 +14,22 @@
 
 - Let's contextualize to an `E-commerce`
 
+### 1.1 Terminology
+
+1. Presentation layer: Translates user actions into application requests
+
+- Handles UI/UX
+- Knows nothing of business rules, just how to show data and capture input
+
+2. Application layer: Orchestrate `use-cases` (aka `application services`)
+
+- Receives commands from Presentation, invoke Domain logic, coordinates transations
+- Doesn't contain business rules itself, just `wiring` and policies (security checks, logging, validation)
+
+3. Domain layer: Encapsulates business logic and data
+
+4. Infrastructure layer
+
 ## 2. Understand the context
 
 - Functional, non-functional requirements and restrictions
