@@ -149,3 +149,19 @@
   - Boilerplate (many interfaces & adapters)
   - Overkill for small apps
   - Discipline to keep core pure
+
+#### 7. CQRS (Command-Query Resposibility Segregation) & Event Sourcing
+
+- CQRS: Separate models for reads (queries) and writes (commands/mutations)
+- Event sourcing: Every state changed is persisted as an immutable event log, reconstruct state by replaying events
+- Example: Banking ledger: each debit/credit is an event; read model `project account balance` and the events inside it
+- Pros:
+
+  - Scalable read paths optimized separetely
+  - Full audit via event log
+  - Easy temporal queries & "time travel" debug
+
+- Cons:
+  - Complex to implement (sagas, projections)
+  - Event-versioning is tricky as business evolves
+  - Higher storage & operational overhead
