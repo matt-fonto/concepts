@@ -39,6 +39,20 @@
   - DB implementations, message brokers, external API clients, file systems
 - Infra code implements interfaces from the application or domain layers, so technologies can be swap with minimal impact
 
+### 1.2 Software Architecture vs. System Design
+
+- Software architecture
+
+  - How you organize and isolate business logic, enforce boundaries, and keep concerns separate
+  - Blueprint of your code's structure
+    - module/layers (presentation, application, domain, infra)
+    - key patterns (layered, microservice, hexagonal)
+    - and how they depend on and relate to each other
+
+- System design
+  - How the whole system scales, stays reliable, meets SLA (service level agreement) under real-world load
+  - Describe entire end-to-end system: services, data stores, networks, clients, caches, CDNs, message bussess, failure domains, monitoring, CI/CD, security, etc
+
 ## 2. Understand the context
 
 - Functional, non-functional requirements and restrictions
@@ -76,6 +90,11 @@
 
 - YAGNI -> You ain't gonna need it. -> Avoid overengineering
 - Good book -> Software architecture patterns
+- Architecture will evolve
+  - Requirements change
+  - Some changes are expensive
+  - Some changes are unintended
+  - Balance to avoid under/over engineering
 
 ### 4.1 Software architecture patterns
 
@@ -190,3 +209,23 @@
   - Complex to implement (sagas, projections)
   - Event-versioning is tricky as business evolves
   - Higher storage & operational overhead
+
+## 5. Scaling Distributed Systems
+
+- What should we scale?
+
+  - Requests -> the number of concurrent requests?
+  - Data -> the amount of data we handle?
+
+### 5.1 Vertical scale: Add more processing power to same instance/node
+
+### 5.2 Horizontal scale: Add more nodes on the workflow
+
+- Split load between different servers
+- Increases scalability and reliability
+- Do you have state?
+  - If yes
+    - You will face the CAP theorem
+      - CAP: Consistency, Availability, Partition (choose 2)
+  - If no
+    - Simply adding a load balancer does the trick
