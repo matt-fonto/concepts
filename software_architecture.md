@@ -16,19 +16,28 @@
 
 ### 1.1 Terminology
 
-1. Presentation layer: Translates user actions into application requests
+#### 1. Presentation layer: Translates user actions into application requests
 
 - Handles UI/UX
 - Knows nothing of business rules, just how to show data and capture input
 
-2. Application layer: Orchestrate `use-cases` (aka `application services`)
+#### 2. Application layer: Orchestrate `use-cases` (aka `application services`)
 
 - Receives commands from Presentation, invoke Domain logic, coordinates transations
 - Doesn't contain business rules itself, just `wiring` and policies (security checks, logging, validation)
 
-3. Domain layer: Encapsulates business logic and data
+#### 3. Domain layer: Encapsulates business logic and data
 
-4. Infrastructure layer
+- Depending the architecture, and teamsize, the application layer (interfaces), live here, in the domain layer
+- The brain of the system. Encapsulates core business logic and rules of the application
+- Ideally, it should be "hidden" away and independent from the rest of the system. Then, the application layer would make the job of translating it back and forth
+  - Should be independent from specific technologies or frameworks
+
+#### 4. Infrastructure layer
+
+- Provide technical capabilities behind ports/adapters
+  - DB implementations, message brokers, external API clients, file systems
+- Infra code implements interfaces from the application or domain layers, so technologies can be swap with minimal impact
 
 ## 2. Understand the context
 
