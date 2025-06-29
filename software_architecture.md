@@ -119,3 +119,33 @@
   - Challenges in data consistency
 
 #### 5. Serverless / FaaS (Function as a service)
+
+- Deploy individual functions triggered by evetns (HTTP calls, queues, timers)
+- Infra is abstracted away
+- Example: AWS Lambda handling image-upload resizing
+- Pros:
+
+  - No server management, pay per execution
+  - Automatic scaling to zero when idle
+  - Fast to prototype small pieces
+
+- Cons:
+  - Cold-start latency for infrequent functions
+  - Limited execution time & resource quotas
+  - Difficult to coordinate complex, long-running workflows
+
+#### 6. Hexagonal (Ports & Adapters)
+
+- Business logic lives at the core
+- All external interactions (UI, DB, APIs) plug in via well-defined ports and adapters
+- Example: Core `Order` domain exposes an `OrderRepository` port; adapters implement it for MySQL, MongoDB, or in-memory tests
+- Pros:
+
+  - strong isolation of domain from infra
+  - easy to swap frameworks or test without real infra
+  - encourages well-defined, explicit interfaces
+
+- Cons:
+  - Boilerplate (many interfaces & adapters)
+  - Overkill for small apps
+  - Discipline to keep core pure
