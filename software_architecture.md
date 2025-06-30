@@ -320,3 +320,48 @@
   - data replication
   - parallel processing
   - decoupling
+
+## 8. SAGA Pattern in Microservices
+
+- What are microservices?
+  - A way to design software as a suite of independently deployable services. Usually around a business capability
+
+### Concepts
+
+1. Bounded contexts & Single Responsibility
+
+- Each service owns one business capability (e.g., Orders, Inventory, Payments)
+- Models and logic stay inside that context. Minimize/avoid leaks between services
+
+2. Loose coupling & high cohesion
+
+- Services communicate **only** via well-defined contracts (APIs or events)
+- Internal implementation can change without breaking consumers
+
+3. Independent deployability & Scalability
+
+- Build, test, deploy, and scale each service on its own
+- Failures are isolated
+
+4. Decentralized Data Management
+
+- Database-per-service: each service has its own schema or datastore
+- Avoid a single shared db; coordination happens via APIs or event streams
+
+5. Communication patterns
+
+- Sync: HTTP/REST, gRPC -> simple but couples latency and availability
+- Async: message brokers or event buses. Better decoupling and resilience under load
+
+6. Infra automation
+
+- Containerization (Docker), orchestration (K8s), and CI/CD pipelines help on the process
+
+7. API Gateway & Service discovery
+
+- API Gateway centralizes routine, auth and rate-limiting
+- Serive Discovery (DNS or registry) let services find each other dynamically
+
+8. Observability
+
+- Centralized logging, metrics (e.g. Prometheus) and distributed tracing (e.g. OpenTelemetry) help on identifying issues on distributed, micro, services
