@@ -46,12 +46,29 @@
   - How you organize and isolate business logic, enforce boundaries, and keep concerns separate
   - Blueprint of your code's structure
     - module/layers (presentation, application, domain, infra)
-    - key patterns (layered, microservice, hexagonal)
-    - and how they depend on and relate to each other
+    - key patterns (layered, microservice, hexagonal, CQRS) and how they depend on and relate to each other
+    - focus on how to:
+      - organize and isolate business logic
+      - enforce boundaries
+      - keep concerns separate
 
 - System design
-  - How the whole system scales, stays reliable, meets SLA (service level agreement) under real-world load
   - Describe entire end-to-end system: services, data stores, networks, clients, caches, CDNs, message bussess, failure domains, monitoring, CI/CD, security, etc
+  - focus on how to:
+    - scale the system
+    - keep it reliable
+    - meet SLA (service level agreement) under real-world load
+
+#### Overlaps
+
+- CAP Theorem -> Consistency, Avaibility, Partition-tolerance
+  - Trade-offs in your data layer or distributed systems
+- Scaling
+  - Vertical: more powerful node (more computational power RAM/CPU)
+  - Horizontal: more instances of nodes (sharding, load-balancing)
+- Requirements
+  - Functional: what the system must do
+  - Non-functional: how the system must do it (-ilities)
 
 ## 2. Understand the context
 
@@ -64,7 +81,7 @@
 - Buy products
 - Review past orders
 
-2. How should the system behave? (Non-functional requirements -> `aka - ilities`)
+2. How should the system behave? (Non-functional requirements -> `aka -ilities`)
 
 - Functionality, usability, reliability, effiency, etc
 
@@ -224,8 +241,21 @@
 - Split load between different servers
 - Increases scalability and reliability
 - Do you have state?
+
   - If yes
+
     - You will face the CAP theorem
+
       - CAP: Consistency, Availability, Partition (choose 2)
+
+        - Consistency
+
+          - Strict consistency: any write is immediately available to all readers
+          - Eventual consistency: there's a delay between a write an when all readers can see that write
+
   - If no
     - Simply adding a load balancer does the trick
+
+- How to horizontally scale a system?
+  - Load balance -> redirect traffic across the nodes in the system
+  - Sharding -> splitting the data in different servers
