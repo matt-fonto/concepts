@@ -259,3 +259,18 @@
 - How to horizontally scale a system?
   - Load balance -> redirect traffic across the nodes in the system
   - Sharding -> splitting the data in different servers
+  - Replication -> multiple copies of the data in different servers
+
+## 6. Distributed Cache
+
+- Cache: data is saved so future requests can be answered faster
+- Why cachings?
+  - Latency reduction: serve frequent reads from fast in-memory store
+  - Load relief: offload dbs or servers under peak traffic
+  - Throughput boost: absorb spikes by answering from cache
+
+> There are only two hard things in Computer Science: cache invalidation and naming things -> Phil Karlton
+
+- Cache can be added later, as it's an optimization technique
+- Steps: make the software maintainable, then scalable, then performant
+  - maintainable -> scalable -> performant
