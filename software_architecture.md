@@ -274,3 +274,49 @@
 - Cache can be added later, as it's an optimization technique
 - Steps: make the software maintainable, then scalable, then performant
   - maintainable -> scalable -> performant
+
+## 7. Event-Driven Architecture
+
+- Event: something that happens
+  - Triggers -> Event notification
+- Command: an order
+  - Expects a response
+  - Triggers -> a message
+- For our purposes, on this context, events and commands will be used interchangeably
+
+- Event
+
+  - can contain data
+  - can notify that something happened
+  - immutable
+
+- Also known as Publish/Subscribe model
+
+### Components
+
+- Producer: creates the events
+- Broker: receives the events and guides them to the consumer
+- Consumer: reacts to events and execute what is needed
+
+### Pros and Cons
+
+- Pros
+
+  - Decoupling
+  - Dependency inversion
+  - Scalability
+  - Event-log
+  - No single point of failure
+
+- Cons
+  - Performance: we add an intermediary layer between "service1" and "service2", the "broker"
+  - Consistency: different services consulting the same broker on different times might get different data
+  - Complexity: harder to track the order of events
+
+### When to use it?
+
+- Scalability is more important than performance
+- When you need
+  - data replication
+  - parallel processing
+  - decoupling
