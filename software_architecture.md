@@ -292,13 +292,13 @@
 
 - Also known as Publish/Subscribe model
 
-### Components
+#### Components
 
 - Producer: creates the events
 - Broker: receives the events and guides them to the consumer
 - Consumer: reacts to events and execute what is needed
 
-### Pros and Cons
+#### Pros and Cons
 
 - Pros
 
@@ -313,7 +313,7 @@
   - Consistency: different services consulting the same broker on different times might get different data
   - Complexity: harder to track the order of events
 
-### When to use it?
+#### When to use it?
 
 - Scalability is more important than performance
 - When you need
@@ -321,12 +321,12 @@
   - parallel processing
   - decoupling
 
-## 8. SAGA Pattern in Microservices
+### 7.1 SAGA Pattern in Microservices
 
 - What are microservices?
   - A way to design software as a suite of independently deployable services. Usually around a business capability
 
-### Concepts
+#### Concepts
 
 1. Bounded contexts & Single Responsibility
 
@@ -366,7 +366,7 @@
 
 - Centralized logging, metrics (e.g. Prometheus) and distributed tracing (e.g. OpenTelemetry) help on identifying issues on distributed, micro, services
 
-### SAGA Pattern
+#### SAGA Pattern
 
 - Design pattern used to managed data consistency in distributed systems, particularly in microservices architectures
 - Breaks down a large transaction into a series of smaller, local transactions
@@ -374,7 +374,7 @@
   - Local transactions: each service updates its own db and publishes an event (or returns a result)
   - Compensation: if any step fails, previously completed services execute compensating transactions to roll back their work
 
-#### Orchestration
+##### Orchestration
 
 - A dedicated orchestrator invokes each step in order and tells services when to compensate
 - Better for more complex, robust workflows
@@ -384,7 +384,7 @@
 - Cons
   - introduces a central point you must scale and make resilient
 
-#### Choreography
+##### Choreography
 
 - Services listen for events and trigger their own "happy/sad" path
 - Better for simpler workflows
@@ -393,3 +393,25 @@
   - loosely coupled
 - Cons
   - harder to visualize E2E flow and debug
+
+### 7.2 Event Sourcing and CQRS
+
+#### Event sourcing
+
+- Persist every state change an an immutable sequence of events
+- The `current` state is rebuilt by replaying those events
+- Pros
+  - "time-travel" debugging
+  - full history
+  - audit purposes
+- Cons
+  - complexity in migrations, event-versioning, snapshotting
+  - storage: even log can become huge unless pruned or optimized
+
+#### CQRS (Command Query Responsibility Segregation)
+
+- Commands (writes) and Queries (reads) use separate models and data stores
+- Write model optimizes business logic
+- Read model optimizes query performance
+- The need for it might arise when the read/write operations get unbalanced
+  - Usually, it should be one of the last resources to fix this unbalance due to is more complex nature
