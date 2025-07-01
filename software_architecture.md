@@ -365,3 +365,31 @@
 8. Observability
 
 - Centralized logging, metrics (e.g. Prometheus) and distributed tracing (e.g. OpenTelemetry) help on identifying issues on distributed, micro, services
+
+### SAGA Pattern
+
+- Design pattern used to managed data consistency in distributed systems, particularly in microservices architectures
+- Breaks down a large transaction into a series of smaller, local transactions
+- Core mechanics
+  - Local transactions: each service updates its own db and publishes an event (or returns a result)
+  - Compensation: if any step fails, previously completed services execute compensating transactions to roll back their work
+
+#### Orchestration
+
+- A dedicated orchestrator invokes each step in order and tells services when to compensate
+- Better for more complex, robust workflows
+- Pros
+  - clear workflow definition
+  - easier error handling
+- Cons
+  - introduces a central point you must scale and make resilient
+
+#### Choreography
+
+- Services listen for events and trigger their own "happy/sad" path
+- Better for simpler workflows
+- Pros
+  - no central coordinator
+  - loosely coupled
+- Cons
+  - harder to visualize E2E flow and debug
