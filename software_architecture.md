@@ -415,3 +415,58 @@
 - Read model optimizes query performance
 - The need for it might arise when the read/write operations get unbalanced
   - Usually, it should be one of the last resources to fix this unbalance due to is more complex nature
+
+## 8. Service Discovery
+
+- Allow services to find and talk to each other dynamically. No hard-coding IPs or hostnames
+- It makes distributed systems resilient, scalable and easy to config by automating the tracking and maintenance of service lookup
+- It needs a service registry
+  - Saved list of services and their localation
+    - key value pair
+    - DNS is a service registry, we we have a key (google.com) and a value (ip 123.456...)
+
+### Features
+
+1. Dynamic endpoint resolution: as instances spin up, die or move, they register/deregister from a central registry (or via DNS)
+
+- Clients query that registry to get the current list of healthy endpoints
+
+2. Load balancing and failover: Clients (or gateways) use the returned list to spread traffic across instances and avoid unhealthy ones automatically
+3. Scaling and elasticity: When you autoscale (add/remove instances), service discovery instantly updates, so consumers never hit dead endpoints
+4. Decoupling and configuration simplification: no need for environment specific URLs into the code, the services are stable and resolved at runtime
+
+### Patterns
+
+1. How the service discovery is accessed?
+
+- Client-side
+
+  - Example:
+    - Browser asks the DNS registry, "where is <website>"?
+    - DNS server says, it's in this <ip>
+    - Then, browser goes to the IP
+  - Pros
+    - Simpler
+  - Cons
+    - Coupling
+    - Server is language-dependent
+
+- Server-side
+  - Example
+    - Client goes to proxy and with <website>
+    - Proxy goes to server with <website>
+    - Proxy receives the address from server and goes to <website>
+      - No need to redirect the client
+  - Pros
+    - Language-agnostic
+    - No coupling
+  - Cons
+    - More complex infra
+
+2. How the service discovery is updated?
+
+- Self registration
+  - The service notifies it's update
+    - I'm up | I'm down
+- 3rd party registratoin
+  - "Registrar" observers the services and communicates the registry
