@@ -164,6 +164,39 @@
   - Data consistency across services is harder
   - Network latency and versioning become trickier
 
+#### Microservices security architecture
+
+- How does a secure monolith application work?
+
+  - User makes a request
+    - Secure, encrypted TLS
+  - We validate the user through auth
+    - We check the db and ask, do you know the user? Which permissions he has?
+    - Authentication -> Who are you? | Can I have your ID/passport, please?
+      - Front-desk check-in
+  - If the user exists, we create a session
+    - One example is like a hotel. We do the check-in (authentication) and get a key (session) to our room (authorization). We're able to access our room and other facilities which our key allows us to
+      - Session: you've got the key
+    - Authorization -> What can you do? | If you've got a ticket for business-first class, you're able to enter that space of the plane. If you're a pilot, you'd have other authorization, etc
+
+- How does a secure microservice work?
+
+  - API Gateway: a service that sits between the users and the microservices behind it
+    - They authenticate the user before it accesses the services behind it
+    - Session becomes available through all the services
+    - Ex: OAuth
+    - Rate limit: some checks are done to see if you still can use that service
+      - You can have breakfast at the hotel, but not twice on the same day
+
+- When securing resources, we should strike a balance between cost/effectiveness
+  - What assets do we need to protect?
+  - What does security mean for us?
+    - CIA: Confidentialy, Integrity, Availability
+      - Confidentialy: you access what you should and nothing more
+      - Integrity: what you access is true/reliable
+      - Availability: you can access when you need it
+  - What is the environment our system operates?
+
 #### 4. Event-driven
 
 - Components communicate by emitting and consuming events via a broker or bus, enabling async decoupling
