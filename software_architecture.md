@@ -510,11 +510,27 @@
   - Pass messages to one another to achieve a common goal
   - Like a "company" or a "city"
 - Distributed systems is how we build large-scale applications that handle huge amounts of data
+
   - Fault-tolerant
   - Scalable
+
+- Challenges of distributed systems: communication, scalability, resiliency, coordination, maintainability
 
 ### Concepts
 
 - Nodes: services/servers that share work
 - Concurrency and parallelism: tasks run in parallel. Coordination for correct ordering
 - State management: Replication or sharding to spread data and load
+
+### How do computers elect leaders?
+
+- Leader election: group of nodes in a distributed system select a single leader among them to coordinate and manage system's activities
+  - Leader responsibility:
+    - Resource allocation: Who gets what?
+    - Task scheduling: what should we do and in what order?
+
+#### RAFT
+
+- Consensus algorithm that elects a leader
+  - Process by which a group of nodes agree on a single value/decision
+- Leader election algorithm. Used in Kafka, MongoDB
