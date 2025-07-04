@@ -503,3 +503,18 @@
     - I'm up | I'm down
 - 3rd party registratoin
   - "Registrar" observers the services and communicates the registry
+
+## 9. Distributed Systems
+
+- Group of nodes located on different, connected places, which communicate and coordinate their actions
+  - Pass messages to one another to achieve a common goal
+  - Like a "company" or a "city"
+- Distributed systems is how we build large-scale applications that handle huge amounts of data
+  - Fault-tolerant
+  - Scalable
+
+### Concepts
+
+- Nodes: services/servers that share work
+- Concurrency and parallelism: tasks run in parallel. Coordination for correct ordering
+- State management: Replication or sharding to spread data and load
