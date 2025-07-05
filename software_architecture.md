@@ -545,3 +545,63 @@
 - Consensus algorithm that elects a leader
   - Process by which a group of nodes agree on a single value/decision
 - Leader election algorithm. Used in Kafka, MongoDB
+
+## 10. Software Architecture - The hard parts
+
+Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
+
+- What happens when there are no "best practices"?
+
+  - In software architecture, we can't say "I've solved this problem forever"
+  - It's always trade-offs
+
+- Knowledge versus Wisdom
+
+  - Tools (chatgpt, google) provide us knowledge, but they can't provide us wisdom
+
+- Software architecture is all about trade-offs
+
+### Service granularity: What is the right level of granurality for a service?
+
+- How singular is single?
+- Iterative design
+
+#### Desintegrators: situations/concepts in architecture that move us to break things apart
+
+> When should I consider breaking apart a service?
+
+- Carry this toolbox with you
+  - The list below is a starter-kit
+
+1. Service functionality
+
+- If you only follow service functionality, you end up with incredibly tiny microservices
+- This is slow and you enter into a realm of doing too much network calls for too little result
+
+2. Code volatility
+
+- Volatility-based decomposition
+
+3. Scalability and throughput
+   > Throughput: the amount of material or items passing through a system or process
+
+- If one of the parts of your system needs a lot of scalability, elasticity, etc (operations), it's a good candidate to be broken apart from the rest of the system
+- Try to isolate. It's much harder to build a whole system that is scalable, safe, performant, than it's to build a portion of it that has these characteristics
+
+4. Fault tolerance
+
+5. Access restriction
+
+#### Integrators: situations/concepts in architecture that move us to put things together
+
+> When should I consider putting services back together?
+
+- Database transactions
+
+  - As a rule of thumb, avoid transactions between services
+  - If two services need a transaction, generally it's a good idea to bundle them together
+
+- Data dependencies
+
+- Workflow and choreography
+  - Sometimes, taking one decision or another, it's not about increase/reducing complexity, only of moving complexity around
