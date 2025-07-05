@@ -528,6 +528,17 @@
   - Leader responsibility:
     - Resource allocation: Who gets what?
     - Task scheduling: what should we do and in what order?
+- In distributed systems, we want one node to serialize writes and act as the "source of truth"
+- All nodes agree on one leader for a given term (epoch)
+  - During that term only the leader issues updates
+
+#### Mechanics
+
+- Nodes start as followers
+  - If they stop hearing from a leader (timeout), they switch to candidate and start an election
+- A node grants its vote once per tero to the first candidate whose log is at least as up-to-date as its own
+- Majority >= ((number_nodes/2) + 1) decides. Ties time-out and retry
+- Winner becomes leader and immediately sends heartbeats to prevent new elections
 
 #### RAFT
 
