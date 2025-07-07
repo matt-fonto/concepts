@@ -624,9 +624,9 @@ Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
 - Workflow and choreography
   - Sometimes, taking one decision or another, it's not about increase/reducing complexity, only of moving complexity around
 
-### Modern tradeoff analysis
+### Modern tradeoff analysis (Pro Tips)
 
-1. Pro tip 1: Careful for the **out of context** trap when analyzing tradeoffs
+1. Careful for the **out of context** trap when analyzing tradeoffs
 
 - Creating a table comparing the two systems is a good strategy. However, if we simply count the "pros/cons", we can fall into the **out-of-context trap**
 - Don't assume characteristics have the same weight and value
@@ -639,12 +639,12 @@ Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
 
 ....
 
-2. Pro tip 2: Model relevant business use-cases scenarios to extract trade-offs
+2. Model relevant business use-cases scenarios to extract trade-offs
 
 - One of the problems in software architecture is that sometimes we're building something that has never been built before
   - The forces/challenges for that context are exclusive and unique for that set of circumstances
 
-3. Pro tip 3: Compare like things
+3. Compare like things
 
 - MECE Lists: Mutually exclusive, collectively exhaustive
 
@@ -654,6 +654,36 @@ Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
 
 - Compare apples with apples. Not apples with oranges
 
-4. Pro tip 4: Don't over-evangelize any particular technology or solution
+4. Don't over-evangelize any particular technology or solution
 
-5. Pro tip 5: Avoid brittleness -> Changes in one local that cause ripples where it shouldn't
+- Always ask, from the business perspective, what's more important? A or B?
+
+5. Avoid brittleness -> Changes in one local that cause ripples where it shouldn't
+
+6. Don't overwhelm the business stakeholders with too many trade-off choices; bottom line it from them instead
+
+- Put the technical talk into their terms. What do they get?
+- Show the pros and cons between the choices
+- Learn how to speak the business language. You should learn the business language, they won't learn yours
+  - Take all the details, and wrap them cleanly into simple decisions/advantages/disadvantages
+
+7. Use qualitative analysis to iterate on design, leading to quantitative analysis
+
+- Qualitative: relating to, measuring, or measured by the **quality** of something rather than its quantity
+
+  - Identify the adjectives: slow, fast, performant, coupled, complex, testable, etc.
+
+- Quantitative: relating to, measuring, or measure by the **quantity** of something rather than its quality
+
+  - Measure the numbers
+    - how much slow, fast, performant, etc.?
+
+- Transactional sagas
+  - Communication
+    - Sync or async?
+  - Consistency
+    - Atomic or eventual?
+  - Coordination - Choreographed or orchestrated?
+    > Tip: to calculate the total number of these possibilities we get the product (number of choices) of the options in every category:
+    > communication (2) x consistency (2) x coordination (2) = 2^3 (2 products^3 categories => m^k) = 8 combinations
+    > product: the result you get when you multiply numbers
