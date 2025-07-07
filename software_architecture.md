@@ -559,7 +559,25 @@ Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
 
   - Tools (chatgpt, google) provide us knowledge, but they can't provide us wisdom
 
-- Software architecture is all about trade-offs
+- In software architecture, we normally don't look for the best design.
+  - There are always trade-offs
+  - The least-worst-design is what we need
+
+### Principles
+
+1. Everything in software architecture is a trade off
+
+- If you think something doesn't have a trade off, it means you haven't found it yet
+  - Keep looking
+- Iterate on your design to find the forces that drive you in one direction or the other
+- Part of your job as an architect is to go through all the technical details and summarize that, highlighting the trade-offs details
+  - Nice concise summary
+  - Prioritize what is the most important things
+
+2. Why is more important than how
+
+- Implementation details change, but understanding why a decision was made, lets architects:
+  - revisit, change, defend, replace that change effectively
 
 ### Service granularity: What is the right level of granurality for a service?
 
@@ -605,3 +623,37 @@ Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
 
 - Workflow and choreography
   - Sometimes, taking one decision or another, it's not about increase/reducing complexity, only of moving complexity around
+
+### Modern tradeoff analysis
+
+1. Pro tip 1: Careful for the **out of context** trap when analyzing tradeoffs
+
+- Creating a table comparing the two systems is a good strategy. However, if we simply count the "pros/cons", we can fall into the **out-of-context trap**
+- Don't assume characteristics have the same weight and value
+  - Simple yes/no might not be enough when deciding the architecture
+  - We need to prioritize the most important characteristics
+
+| Characteristics | Service 1 | Service 2 |
+| --------------- | --------- | --------- |
+| Charac_1        | yes       | no        |
+
+....
+
+2. Pro tip 2: Model relevant business use-cases scenarios to extract trade-offs
+
+- One of the problems in software architecture is that sometimes we're building something that has never been built before
+  - The forces/challenges for that context are exclusive and unique for that set of circumstances
+
+3. Pro tip 3: Compare like things
+
+- MECE Lists: Mutually exclusive, collectively exhaustive
+
+  - Mutually exclusive: they're separate from one another. No overlaps.
+  - Collectively exhaustive: together they cover the problem space. Cover the entire space.
+    > I want solutions that cover all the problem space with no overlaps
+
+- Compare apples with apples. Not apples with oranges
+
+4. Pro tip 4: Don't over-evangelize any particular technology or solution
+
+5. Pro tip 5: Avoid brittleness -> Changes in one local that cause ripples where it shouldn't
