@@ -67,6 +67,24 @@ The computers...
 - It can also be useful for "replicating" the data through the nodes. e.g., the item can be saved on its node and the next two
   ![alt text](image-4.png)
 
+  - But then, we get consistency problems. We get 3 copies of 3 things that can change in 3 computers
+
+    - Write: we can "demand" that 1/2 node(s) save the information, otherwise we consider it a failure
+    - Readt: we can "demand" that 1/2 node(s) retrieve the information, otherwise we consider it a failure
+
+    > Formula: R + W > N
+
+    - Where:
+
+      - R: number of nodes I read
+      - W: number of nodes I write
+      - N: number of nodes/replicas
+
+      If R + W > N, then I have strong consistency
+
+      - If read 1 and write 1 and 3 replicas -> eventual consistency
+      - If read 2 and write 2 and 3 replicats -> strong consistency
+
 ##### How it works
 
 1. Hash ring
