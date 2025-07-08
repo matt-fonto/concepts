@@ -106,6 +106,18 @@ The computers...
      - Only keys between itself and its predecessor are reassigned
    - Removing a node: its keys move to its successor
 
+#### CAP Theorem
+
+- Consistency: if I read something, it should be the most updated
+- Available: if I try to read it works, if I try to write it works
+- Partition tolerance: if I wrote something, and part of the system failed, it still should save what I wrote
+
+  - System ability's to continue working even when communication between nodes fails
+
+- When a partition (error) happens, we must pick either:
+  - CP: refuse some reads/writes to stay consistent (sacrifice availability)
+  - AP: server all request but risk returning stale data (sacrifice consistency)
+
 ### Computation
 
 ### Messaging
