@@ -19,3 +19,13 @@
 - Scalability & Load balancing: Horizontal vs. Vertical
   - Distributing traffic
 - Observability: Distributed tracing, centralized logging, metrics (latency, error rates)
+
+## Key tech
+
+- RPC & APIs: gRPC, Apache Thrift, REST/GraphQL over HTTP/2
+- Messaging & Streaming: Apache Kafka, RabbitMQ, NATS
+- Coordination services: Apache ZooKeeper, etcd, HashiCorp Consul
+- Distributed datastores: Cassandra, CockroachDB, MongoDB, Amazon DynamoDB
+- Containerization & Orchestration: Docker, K8s, Docker Swarm
+- Service mesh & load balancing: NGINX, Istio, Linkerd
+- Monitoring & tracing: Prometheus, Grafana, Jaeger
