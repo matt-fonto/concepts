@@ -562,6 +562,7 @@ Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
 - In software architecture, we normally don't look for the best design.
   - There are always trade-offs
   - The least-worst-design is what we need
+  - No silver-bullets, it's trade-off analysis
 
 ### Principles
 
@@ -626,7 +627,7 @@ Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
 
 ### Modern tradeoff analysis (Pro Tips)
 
-1. Careful for the **out of context** trap when analyzing tradeoffs
+#### 1. Careful for the **out of context** trap when analyzing tradeoffs
 
 - Creating a table comparing the two systems is a good strategy. However, if we simply count the "pros/cons", we can fall into the **out-of-context trap**
 - Don't assume characteristics have the same weight and value
@@ -639,12 +640,12 @@ Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
 
 ....
 
-2. Model relevant business use-cases scenarios to extract trade-offs
+#### 2. Model relevant business use-cases scenarios to extract trade-offs
 
 - One of the problems in software architecture is that sometimes we're building something that has never been built before
   - The forces/challenges for that context are exclusive and unique for that set of circumstances
 
-3. Compare like things
+#### 3. Compare like things
 
 - MECE Lists: Mutually exclusive, collectively exhaustive
 
@@ -654,20 +655,20 @@ Source: https://www.youtube.com/watch?v=Q6RfMmMwhvM
 
 - Compare apples with apples. Not apples with oranges
 
-4. Don't over-evangelize any particular technology or solution
+#### 4. Don't over-evangelize any particular technology or solution
 
 - Always ask, from the business perspective, what's more important? A or B?
 
-5. Avoid brittleness -> Changes in one local that cause ripples where it shouldn't
+#### 5. Avoid brittleness -> Changes in one local that cause ripples where it shouldn't
 
-6. Don't overwhelm the business stakeholders with too many trade-off choices; bottom line it from them instead
+#### 6. Don't overwhelm the business stakeholders with too many trade-off choices; bottom line it from them instead
 
 - Put the technical talk into their terms. What do they get?
 - Show the pros and cons between the choices
 - Learn how to speak the business language. You should learn the business language, they won't learn yours
   - Take all the details, and wrap them cleanly into simple decisions/advantages/disadvantages
 
-7. Use qualitative analysis to iterate on design, leading to quantitative analysis
+#### 7. Use qualitative analysis to iterate on design, leading to quantitative analysis
 
 - Qualitative: relating to, measuring, or measured by the **quality** of something rather than its quantity
 
