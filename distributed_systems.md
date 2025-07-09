@@ -139,3 +139,14 @@ The computers...
   - No cluster required
 
 ### Messaging
+
+- Means of loosely coupling subsystems
+- Messages consumed by subscribers
+- Created by one or more producers
+- Organized into topics
+- Processed by brokers
+- Usually persistent over the short term
+- Producers sends messages about a topic for a consumer
+  - Message: immutable array of bytes
+
+#### Apache Kafka
