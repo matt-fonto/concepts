@@ -120,4 +120,22 @@ The computers...
 
 ### Computation
 
+- Hadoop
+
+  - Map/Reduce
+  - Considered legacy today
+
+- Spark
+
+  - Scatter/gather paradigm (similar to MapReduce)
+  - More general data model (RDDs, DataSets)
+  - More general programming model (transform/action)
+  - Storage agnostic
+
+- Kafka
+  - Focus o real-time analysis, not batch jobs
+  - Streams and streams only
+  - Except streams are also tables (sometimes)
+  - No cluster required
+
 ### Messaging
