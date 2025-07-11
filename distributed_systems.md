@@ -150,3 +150,9 @@ The computers...
   - Message: immutable array of bytes
 
 #### Apache Kafka
+
+- Message: immutable array of bytes
+- Topic: feed/collection of messages
+- Producer: a process that publishes messages to a topic
+- Consumer: a single-threaded process that subscribes to a topic
+- Broker: servers that comprises a cluster (it has many topics)
