@@ -1,6 +1,6 @@
 # Dev Tools
 
-## Fundamentals
+## 1. Fundamentals
 
 ### Settings
 
@@ -57,7 +57,36 @@
   - IndexedDB: Browser structured storage databases
   - Cookies: Inspect, modify or delete HTTP cookies
 
-## Cool tricks
+### More options
+
+On the dev tools, go to menu beside the settings, where you can change the dock size, search open file, etc, and find `more tools`. There, you will be able to see a list of varied browser resources, such as:
+![alt text](image-5.png)
+
+- AI assistance: generate elements selectors, explain CSS rules, mock tests or code snippets
+  - You need to turn on these features. Go to the settings, and turn what you need
+- Animations: timeline settings for animations
+- Autofill: Preview and trigger browser autofill data (addresses, credit cards, etc) on form fields
+- Changes: tracks stylesheet/script edits in DevTools. Allows you to review and export the diff
+- Coverage: Shows which CSS/JS is actually used on the pages vs. what you can trim to reduce bundle size
+- CSS Overview: Sum up report on CSS: color palette, font usage, duplicated rules
+- Developer resources: quick links to internal browser pages and specs
+- Issues: centralized list of warnings, depcrecations, policy or security violations detected on the page
+- Layers: visualize layers, which elements get GPU-accelerated and how they're stacked
+- Media: inspect `video` `audio` elements
+- Memory inspector: Low-level view of JS heap buffers (ArrayBuffers, TypedArrays) and raw memory layout
+- Network conditions: Override user-agent strings, emulate offline or custom network latencies/bandwidth
+- Network request blocking: Define URL patterns to block specific resources (ads, analytics, APIs) on the fly
+- Performance monitor: Live charts for CPU usage, JS heap size, DOM node count (great for identifying spikes)
+- Private and security: Inspect TLS certs, mixed-content issues, CORS errors and security/privacy settings
+- Quick source: search source files by name without hunting through sources panel
+- Recorder: Record user interactions as playback scripts or performance traceable flows -> really interesting
+- Rendering: paint flashing, layer borders, FPS meter, and other visual overlays to debug rendering issues
+- Search: Global text search across all loaded files and resources
+- Sensors: Emulate geolocation, device orientation, touch support, and override the page's clock
+- WebAudio: Graphical debugger for AudioContext: inspect nodes, parameters and real-time audio graph
+- WebAuthn: Simulate WebAuthn (passkey) authenticator devices for testing login flows
+
+## 2. Cool tricks
 
 - Logpoints: Instead of adding `console.log()` to the code, you can:
 
