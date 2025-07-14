@@ -60,6 +60,7 @@
 ### More options
 
 On the dev tools, go to menu beside the settings, where you can change the dock size, search open file, etc, and find `more tools`. There, you will be able to see a list of varied browser resources, such as:
+
 ![alt text](image-5.png)
 
 - AI assistance: generate elements selectors, explain CSS rules, mock tests or code snippets
@@ -119,3 +120,13 @@ On the dev tools, go to menu beside the settings, where you can change the dock 
   - it's like creating your own Chrome extension
 
 - To clean cache: with the DevTools open, select reload, then there will be an option to clean the cache
+
+## 3. Debugging
+
+- Source panel
+- We can debug by line, or by `Event Listener Breakpoints`
+  - Therefore, we can stop the code on events such as:
+    - DOM Mutation
+    - Keyboard events
+    - Mouse events
+      and many others
