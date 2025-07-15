@@ -64,8 +64,57 @@
 
 ### Network
 
+- Interesting docs: https://developer.chrome.com/docs/devtools/network/reference/
 - Monitor resource requests
 - Inspect HTTP methods, headers, payloads, response codes, resource sizes, and load timing
+- When clicking a resource, you get the following tabs:
+  - headers: general, response, request
+  - preview: structured output
+  - response: raw output
+  - initiator
+  - timing: waterfall visualization of how long the request response took
+  - cookies
+- Tip: to save requests across page reloads, click `Preserve Log` checkbox on the network panel
+
+#### Headers
+
+- Click any resource to open the headers tab. It's organized into:
+
+1. General
+
+- Request URL: full endpoint (including query-string)
+- Request Method: GET, POST, etc
+- Status code + text: 200 OK, 404 Not Found
+- Remote addres and Referrer Policy
+
+2. Response Headers: Server sent metada about the payload
+
+- Content-Type: MIME Type => text/html, images etc
+- Content-Length
+- Cache-Control, Expires
+- CORS
+- Security
+
+3. Request Headers: What the client (your browser) sent
+
+- Host, User-Agent, Accept, Accept-Encoding
+- Authentication: Authorization, Cookie
+- Custom headers: e.g. `X-CSRF-Token`, `X-Requested-With`
+
+4. Query String Parameters: Lists `?key=value` pairs parsed out of the URL
+
+5. Request Payload / Form Data
+
+- Form Data: key-value form submissions
+- Payload: raw JSON, text or binary bodies
+
+#### Preview
+
+Formatted view (JSON, HTML, imag..)
+
+#### Response
+
+raw server output
 
 ### Console
 
@@ -97,6 +146,28 @@ console.time("dbQuery");
 console.timeLog("dbQuery"); // it brings the time in ms
 console.timeEnd("dbQuery");
 ```
+
+- `console.group()`/ `.groupCollapsed()` / `.groupEnd()`: Nest logs into expandable groups
+
+```js
+console.group("Init process");
+console.log("Step 1");
+console.log("Step 2");
+console.groupEnd();
+```
+
+- `console.assert()`: Log an error only if the assertion is false
+
+```js
+const user = {
+  isAdmin: false, // if it were true...
+};
+
+// Assertion failed: user must be admin to access this
+console.assert(user.isAdmin, "user must be admin to access this"); //... this'd return as undefined
+```
+
+![alt text](image-7.png)
 
 ### Performance
 
