@@ -25,6 +25,43 @@
 - Debug and step through JS
 - Set breakpoints, step, watch variables, and live-edit scripts
 
+### Debugging
+
+> Identifying the root of the problem and reproducing it, identifying ways to get rid of it
+
+- Source panel
+
+  - We can debug by line, or by `Event Listener Breakpoints`
+  - Therefore, we can stop the code on events such as:
+    - DOM Mutation
+    - Keyboard events
+    - Mouse events
+      and many others
+
+- We can add `debugger` to the JavaScript. It will stop execution when it gets there
+
+1. Reproduce & Isolate
+
+- Minimal, self-contained test case
+
+2. Use DevTools Breakpoints
+
+- Pause execution exactly where you need it
+- Use "Pause on exceptions" to catch errors as they happen
+- We can set `add breakpoints on condition`, then it will evaluate a boolean to identify whether or not to pause the code
+- Breakpoints are also interesting to not only see, but also manipulate variables as the code runs.
+  - We can check their value on console on that specific iteration
+  - We can change their value on the `Sources/Scope`
+- We can add breakpoints not only to JS on the `source` tab, but also to the DOM, on the `elements` tab
+- We can also add to the console `debug(funcName)`. When this function is called, the breakpoint will kick in
+
+3. If you add your workspace to the browser, the changes you do on the browser will be preserved on the files itself
+
+- It changes the file system
+
+4. You can store `Snippets` on the browser
+   > Source/Snippets/New Snippet
+
 ### Network
 
 - Monitor resource requests
@@ -34,6 +71,21 @@
 
 - Execute JS code
 - View logs, warnings and errors
+
+#### Types of console
+
+Logging levels: They basically do the same, more or less -> console...
+
+- .debug(): low-prioririty debug messages. They don't appears unless we set `Verbose`
+- .info(): informational message. Usually styled with `i` icon
+- .warn(): yellow-highlighted
+- .error(): red-highlighted. Also prints the stack track
+
+Structure data: Way to dissect further objects and arrays
+
+- .dir(obj): list's objects properties as a collapsible tree
+- .table(arr): renders arrays or objects as a sortable table -> Really cool!
+  ![alt text](image-6.png)
 
 ### Performance
 
@@ -120,40 +172,3 @@ On the dev tools, go to menu beside the settings, where you can change the dock 
   - it's like creating your own Chrome extension
 
 - To clean cache: with the DevTools open, select reload, then there will be an option to clean the cache
-
-## 3. Debugging
-
-> Identifying the root of the problem and reproducing it, identifying ways to get rid of it
-
-- Source panel
-
-  - We can debug by line, or by `Event Listener Breakpoints`
-  - Therefore, we can stop the code on events such as:
-    - DOM Mutation
-    - Keyboard events
-    - Mouse events
-      and many others
-
-- We can add `debugger` to the JavaScript. It will stop execution when it gets there
-
-1. Reproduce & Isolate
-
-- Minimal, self-contained test case
-
-2. Use DevTools Breakpoints
-
-- Pause execution exactly where you need it
-- Use "Pause on exceptions" to catch errors as they happen
-- We can set `add breakpoints on condition`, then it will evaluate a boolean to identify whether or not to pause the code
-- Breakpoints are also interesting to not only see, but also manipulate variables as the code runs.
-  - We can check their value on console on that specific iteration
-  - We can change their value on the `Sources/Scope`
-- We can add breakpoints not only to JS on the `source` tab, but also to the DOM, on the `elements` tab
-- We can also add to the console `debug(funcName)`. When this function is called, the breakpoint will kick in
-
-3. If you add your workspace to the browser, the changes you do on the browser will be preserved on the files itself
-
-- It changes the file system
-
-4. You can store `Snippets` on the browser
-   > Source/Snippets/New Snippet
