@@ -87,6 +87,17 @@ Structure data: Way to dissect further objects and arrays
 - .table(arr): renders arrays or objects as a sortable table -> Really cool!
   ![alt text](image-6.png)
 
+Miscellaneous:
+
+- `console.time()`/ `.timeLog()` / `.timeEnd()`: Measure duration between calls
+
+```js
+console.time("dbQuery");
+// run query
+console.timeLog("dbQuery"); // it brings the time in ms
+console.timeEnd("dbQuery");
+```
+
 ### Performance
 
 - Analyize: CPU usage, rendering, scripting, painting, and layout breakdowns
