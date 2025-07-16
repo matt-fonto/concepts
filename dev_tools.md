@@ -175,14 +175,19 @@ console.assert(user.isAdmin, "user must be admin to access this"); //... this'd 
 
 ### Memory
 
+Interesting video: [Memory and Garbage Collection](https://www.youtube.com/watch?v=WqNqeMjd28I)
+
 - Used to inspect and tamoe JS heap to find leaks or excessive allocations
 - Track JS heap usage, take keap snapshots, detect memory leaks
 
   - Heap Snapshot: Capture JS heap at a point in time. Compares snapshots to find objects that shouldn't be retained (memory leaks)
-  - Allocation instrumentation on timeline: Record allocations over time. Correlates spikes to user actions or code paths
-  - Allocation Sampling: Profiling of where objects are allocated, shoing "hot" allocations sites without fullsnapshots
+  - They are are pretty much the same thing: they show memory allocation through time and application usage
+    - Allocation instrumentation on timeline: Record allocations over time. Correlates spikes to user actions or code paths (more robust, more accurate)
+    - Allocation Sampling: Profiling of where objects are allocated, shoing "hot" allocations sites without fullsnapshots (more lightweight, more simple)
   - Garbage collection: Manually triggers GC to see which objects get freed; useful alongside snapshots
   - Detached DOM nodes: Identify DOM nodes that have been removed from the document, but still remained in memory
+
+  - Using the tools above, we can see if there's any value that is taking too much space, `Retained Size`
 
 - It's better to do it on incognito tab
 
