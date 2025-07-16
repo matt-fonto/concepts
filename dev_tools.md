@@ -175,7 +175,46 @@ console.assert(user.isAdmin, "user must be admin to access this"); //... this'd 
 
 ### Memory
 
+- Used to inspect and tamoe JS heap to find leaks or excessive allocations
 - Track JS heap usage, take keap snapshots, detect memory leaks
+
+  - Heap Snapshot: Capture JS heap at a point in time. Compares snapshots to find objects that shouldn't be retained (memory leaks)
+  - Allocation instrumentation on timeline: Record allocations over time. Correlates spikes to user actions or code paths
+  - Allocation Sampling: Profiling of where objects are allocated, shoing "hot" allocations sites without fullsnapshots
+  - Garbage collection: Manually triggers GC to see which objects get freed; useful alongside snapshots
+  - Detached DOM nodes: Identify DOM nodes that have been removed from the document, but still remained in memory
+
+- It's better to do it on incognito tab
+
+#### Garbage Collection
+
+- The main concept of memory management in JS is `recheability`
+  - "recheable" values are those that are accessible or usable somehow
+
+```js
+let user = {
+  name: "john",
+};
+
+// <global> -> user -> Object name:"john"
+
+// if the value of `user` is overwritten, the reference is lost
+
+user = null;
+
+// <global> -> user:null X then, this gets garbage collected >  Object name:"john"
+
+// now, the content of our object { name: "john"} becomes unrecheable (no reference to it), garbage collector will clean it up
+```
+
+- JS automatically frees up memory by reclaiming cleaning up non-primitive values (objects, arrays, functions) that are no longer reacheable from a set of root references, such as:
+
+  - global variables
+  - call stack
+  - DOM references
+
+- Anything we can't access via some chain of references from those roots is considered garbage
+- The basic garbage collection algorithm is called `mark-and-sweep`
 
 ### Application
 
@@ -200,6 +239,14 @@ console.assert(user.isAdmin, "user must be admin to access this"); //... this'd 
 .clear() // wipes all the data
 .length() // number of stored entries
 ```
+
+### Lighthouse
+
+- It does an audit of your website. It verifies:
+  - Performance
+  - Accessibility
+  - Best practices
+  - SEO
 
 ### More options
 
