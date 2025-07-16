@@ -191,6 +191,16 @@ console.assert(user.isAdmin, "user must be admin to access this"); //... this'd 
   - IndexedDB: Browser structured storage databases
   - Cookies: Inspect, modify or delete HTTP cookies
 
+#### Local Storage and Session Storage methods
+
+```js
+.setItem(key, value); // store a string value
+.getItem(key); // retrieve the value
+.removeItem(key)
+.clear() // wipes all the data
+.length() // number of stored entries
+```
+
 ### More options
 
 On the dev tools, go to menu beside the settings, where you can change the dock size, search open file, etc, and find `more tools`. There, you will be able to see a list of varied browser resources, such as:
