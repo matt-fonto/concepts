@@ -62,6 +62,27 @@
 4. You can store `Snippets` on the browser
    > Source/Snippets/New Snippet
 
+#### Debugger
+
+- Add `debugger` inside your code
+- Buttons
+
+  - Resume/Pause execution: runs the code until next debugger
+  - Step over
+  - Step in: steps in (function) from current level
+  - Step out: takes to the next line after the function is called
+  - Step: similar to `Step in`, but works slightly different with async code
+
+- Options
+  - Breakpoints
+    - Pause on uncaught exceptions: quite interesting one to get errors we haven't treated
+      - Good to deal with errors that are appearing, but we don't know where they're coming from
+    - We can also add "breakpoints" on the lines we desire, this way we don't need to add `debugger` on the code
+      - Interesting when we're debugging production code, which we wouldn't be able to modify the source code, but we might want to see what's happening in that context
+  - Call Stack
+    - We can see which function is calling which and their order
+      - Last in, first out
+
 ### Network
 
 - Interesting docs: https://developer.chrome.com/docs/devtools/network/reference/
