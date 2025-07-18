@@ -82,6 +82,27 @@
   - Call Stack
     - We can see which function is calling which and their order
       - Last in, first out
+  - XHR/fetch breakpoints
+    - When we know the URL we're doing the fetch, but don't know where in the code it might be
+  - Event Listener
+    - Add breakpoints to where that event is being listened
+  - Watch
+    - We can type a variable name and see what value it has on certain breakpoint
+    - Good to track down a variable that passes through a big function, for instance
+
+#### VS Code Debugger
+
+- Run and Debug
+
+  - Select the environment where the code will run
+
+    - Web App, for instance
+      - Then you will need you might need to tweak the config
+      - Then, it will launch a chrome browser
+      - Quite similar to the debugging experience on Chrome, yet it's more deeply integrated with VSCode
+      - We can also see the Debug Console to have access to logged information
+
+  - For larger projects, run and debug, inside VS code, is incredibly helpful
 
 ### Network
 
@@ -96,6 +117,9 @@
   - timing: waterfall visualization of how long the request response took
   - cookies
 - Tip: to save requests across page reloads, click `Preserve Log` checkbox on the network panel
+- Tip: Filter by file type, especially as the project grows
+  - Fetch/XHR, Doc, CSS, JS, Font, Img, Media, Manifest, WS, Wasm, Other
+- Tip: also disable cache is an interesting choice
 
 #### Headers
 
