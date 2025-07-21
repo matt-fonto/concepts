@@ -36,6 +36,11 @@ https://refactoring.guru/design-patterns
 
 Instead of creating objects directly, these patterns give you more flexibility in how objects come into existence
 
+- When you...
+  want only one instance -> Singleton
+  want configurable construction -> Builder
+  polymorphic creation -> Factory
+
 - Singleton: Ensure a class has only one instance
   - Promotes Single Instance: prevents multiple copies of resources/state
   - Global access point: easy to use anywhere
@@ -169,7 +174,53 @@ How objects relate to each other. Blueprints for building larger structures from
 
 - Building larger structures from individual pieces
 
-- Facade
+- Facade: Provides a simple interface to a complex subsystem, hiding its internal details
+  - When to use:
+    - Simplify interaction with complex classes
+    - Decouple client code from implementation details
+    - Provide stable API when subsystems evolve
+
+```ts
+// Subsystem classes
+class AuthService {
+  login(user: string, pass: string) {
+    // do something
+    console.log("auth login");
+  }
+}
+
+class DataService {
+  fetchData() {
+    // do something
+    console.log("data fetched");
+  }
+}
+
+class Logger {
+  log(message: string) {
+    console.log("log:", message);
+  }
+}
+
+// facade
+class AppFacade {
+  private auth = new AuthService();
+  private data = new DataService();
+  private logger = new Logger();
+
+  initialize(user: string, pass: string) {
+    this.logger.log("initializing app");
+    this.auth.login(user, pass);
+    this.data.fetchData();
+    this.logger.log("initialization complete");
+  }
+}
+
+// usage
+const app = new AppFacade();
+app.initialize("john", "secret");
+```
+
 - Adapter
 
 ## Behavioral: Object Communication
