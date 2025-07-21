@@ -18,6 +18,20 @@ https://refactoring.guru/design-patterns
 - Structure: shows each part of the pattern and how they relate
 - Code example
 
+### History
+
+- They are typical solutions to common problems in object-oriented designed
+  - When a solution gets repeated over and over, someone puts a name to it and describe the solution
+- Book: Design Patterns: Elements of Reusable Object-Oriented Software
+
+### Why learn them?
+
+- They are a toolkit of tried and tested solutions to common problems in software
+- Teaches us how to solve all sorts of problems using principles of object-oriented design
+- Define a common language on the team and industry
+
+### Classification of patterns
+
 ## Creational: Object Creation
 
 Instead of creating objects directly, these patterns give you more flexibility in how objects come into existence
