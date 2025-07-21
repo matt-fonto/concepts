@@ -173,8 +173,14 @@ notifier.send("Hello world");
 How objects relate to each other. Blueprints for building larger structures from individual pieces
 
 - Building larger structures from individual pieces
+- When you...
+  want to hide everything behind an interface -> facade
+  want to convert something (method, data) -> adapter
 
 - Facade: Provides a simple interface to a complex subsystem, hiding its internal details
+  - Put a pretty front to hide everything behind it
+  - A fancy definition for encapsulation
+  - Helps taming complex subsystems
   - When to use:
     - Simplify interaction with complex classes
     - Decouple client code from implementation details
@@ -221,7 +227,39 @@ const app = new AppFacade();
 app.initialize("john", "secret");
 ```
 
-- Adapter
+- Adapter: Allows incompatible interfaces to work together by translating one interface into another
+
+```ts
+// existing interface
+interface OldLogger {
+  logInfo(msg: string): void;
+}
+
+// new interface
+interface NewLogger {
+  log(msg: string): void;
+}
+
+// adaptee (incompatible)
+class LegacyLogger implements OldLogger {
+  logInfo(msg: string) {
+    console.log("legacy", msg);
+  }
+}
+
+// adapter
+class LoggerAdapter implements NewLogger {
+  constructor(private legacy: OldLogger) {}
+
+  log(msg: string) {
+    this.legacy.logInfo(message); // translate
+  }
+}
+
+const legacy = new LeggacyLogger();
+const logger: NewLogger = new LoggerAdapter(legacy);
+logger.log("hello via adapter");
+```
 
 ## Behavioral: Object Communication
 
