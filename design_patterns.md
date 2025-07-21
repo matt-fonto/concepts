@@ -36,10 +36,132 @@ https://refactoring.guru/design-patterns
 
 Instead of creating objects directly, these patterns give you more flexibility in how objects come into existence
 
-- Singleton
+- Singleton: Ensure a class has only one instance
+  - Promotes Single Instance: prevents multiple copies of resources/state
+  - Global access point: easy to use anywhere
+  - A singleton is basically a glorified global variable
 
-- Builder
-- Factory
+```ts
+class Logger {
+  private static instance: Logger;
+  private constructor() {}
+
+  static getInstance(): Logger {
+    if (!Logger.instance) {
+      Logger.instance = new Logger();
+    }
+
+    return Logger.instance;
+  }
+
+  log(msg: string) {
+    console.log(msg);
+  }
+}
+
+const logger = Logger.getInstance();
+```
+
+- Builder: separates the construction of a complex object from its representation
+  - Allows the creation of complex objects in a more systematic
+  - When to use it:
+    - Many optional params
+    - Immutable final object
+    - Improved API readability
+
+```ts
+class User {
+  private constructor(
+    public readonly name: string,
+    public readonly age: number,
+    public readonly email?: string
+  ) {}
+
+  static builder() {
+    return new UserBuilder();
+  }
+}
+
+class UserBuilder {
+  private name!: string;
+  private age!: number;
+  private email?: string;
+
+  setName(name: string) {
+    this.name = name;
+    return this;
+  }
+
+  setAge(age: number) {
+    this.age = age;
+    return this;
+  }
+
+  setEmail(email: string) {
+    this.email = email;
+    return this;
+  }
+
+  build(): User {
+    if (!this.name || this.age === null) {
+      throw new Error("name and age are required");
+    }
+
+    return new User(this.name, this.age, this.email);
+  }
+}
+
+const user = User.builder()
+  .setName("John")
+  .setAge(30)
+  .setEmail("john@email.com")
+  .build();
+```
+
+- Factory: Encapsulates object creation, returning instances through a common interface
+  - Decouples the code from concrete classes
+  - When to use:
+    - Centralize and standardize creation logic
+    - Support multiple "families" of products
+    - Hide concrete types from callers
+
+```ts
+// common interface
+interface Notification {
+  send(message: string): void;
+}
+
+// concrete implementations
+class EmailNotification implements Notification {
+  send(msg: string) {
+    console.log(`Email: ${msg}`);
+  }
+}
+
+class SMSNotification implements Notification {
+  send(msg: string) {
+    console.log(`SMS: ${msg}`);
+  }
+}
+
+// factory
+class NotificationFactory {
+  static create(type: "email" | "sms"): Notification {
+    switch (type) {
+      case "email":
+        return new EmailNoficiation();
+      case "sms":
+        return new SMSNotification();
+      default:
+        throw new Error("Unsupported type");
+    }
+  }
+}
+
+// usage
+const notifier = NotificationFactory.create("sms");
+notifier.send("Hello world");
+```
 
 ## Structural: The Relation Between Objects
 
