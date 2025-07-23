@@ -10,6 +10,8 @@ https://refactoring.guru/design-patterns
 
 - Algorithm: cooking recipe -> clear steps to achieve a goal
 - Pattern: blueprint -> you can see features and results, but open for implementation
+  - Patterns capture intent, not syntax
+  - So, the same principles hold true for functional programming as well. Then, instead of using classes, we're using functions
 
 ### What does the pattern consist of?
 
@@ -178,13 +180,17 @@ How objects relate to each other. Blueprints for building larger structures from
   want to convert something (method, data) -> adapter
 
 - Facade: Provides a simple interface to a complex subsystem, hiding its internal details
+
   - Put a pretty front to hide everything behind it
   - A fancy definition for encapsulation
   - Helps taming complex subsystems
   - When to use:
+
     - Simplify interaction with complex classes
     - Decouple client code from implementation details
     - Provide stable API when subsystems evolve
+
+  - One downside of a facade is when this interface becomes a "god". It knows and does too much
 
 ```ts
 // Subsystem classes
@@ -228,6 +234,8 @@ app.initialize("john", "secret");
 ```
 
 - Adapter: Allows incompatible interfaces to work together by translating one interface into another
+  - Useful for 3rd-party libraries or API that don't quite match what the code expects
+  - Wrap the lib on an adapter so that it behaves to what the code wants
 
 ```ts
 // existing interface
@@ -265,5 +273,38 @@ logger.log("hello via adapter");
 
 How objects communicate and interact to distribute responsibility
 
-- Strategy
-- Observer
+- Strategy: Swap algorithms at runtime via a common interface
+  - When to use it:
+    - Many variants of an operation
+    - Different ways of doing the same thing
+      - You can add new strategies without touching any single code. You extend it
+
+```js
+type PriceStategy = {
+  total(items: number[]): number,
+};
+
+class Regular implements PriceStrategy {
+  total(items) {
+    return items.reduce((a, b) => a, b, 0);
+  }
+}
+
+class Discount implements PriceStrategy {
+  total(items) {
+    return items.reduce((a, b) => a, b, 0) * 0.9;
+  }
+}
+
+class Cart {
+  constructor(private strategy: PriceStrategy) {}
+
+  checkout(items:number[]){
+    return this.strategy.total(items)
+  }
+}
+```
+
+- Observer: 1 to N updates. Subjects/emitters notify subscribers
+  - When to use:
+    - Events, reactive UIs, shared state (redux), decoupled notifications
