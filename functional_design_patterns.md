@@ -32,9 +32,34 @@ and that
 - A function is a standalone thing, not attached to a class
 - It enters something, it leaves something else
   - apple -> banana
+- Functions can be used as inputs and outputs
 
 ```js
-const z = 1;
+// simplified without the types
+const add = (x) => (y) => x + y;
+const useFn = (f) => f() + 1;
+const transformInt = (f) => (x) => f(x) + 1;
+
+// complete
+// function as OUTPUT
+const add = (x: number) => (y: number) => x + y;
+
+add(3)(4); // 7
+
+// function as INPUT
+const useFunction = (func: () => number): number => func() + 1;
+
+useFunction(() => 10); // 11
+
+// function as PARAMETERS (higher-order)
+type IntFn = (n: number) => number;
+
+const transformInt =
+  (f: IntFn) =>
+  (x: number): number =>
+    f(x) + 1;
+
+transformInt((n) => n * 2)(10); // 10 * 2 = 20 + 1 = output: 21
 ```
 
 ### Composition everywhere
