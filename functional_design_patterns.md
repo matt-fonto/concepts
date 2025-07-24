@@ -46,6 +46,10 @@ and that
 
 - Types can contain business logic
 
+4. Function types are "interfaces"
+
+- Function types provide instant abstraction
+
 ### Functions are things => railway track
 
 - A function is a standalone thing, not attached to a class
@@ -208,8 +212,58 @@ function productOrSum(value: number, operation: "product" | "sum") {
 }
 ```
 
-- Partial application & dependency injection
-- Continuations, chaining & the pyramid of doom
+### Every function should be a one parameter function
+
+- In functional programming, if a function has more than two params, it should be a function that generates other functions
+- In FP, we aim for **unary** (1-arg) functions. If we need more inputs, then we return a new function (currying)
+- Therefore, any function that ultimately needs N > 1 args, should be written as a chain of 1-arg functions
+
+#### Why?
+
+- Composition
+- Readability
+
+```js
+// unary
+const increment = (x) => x + 1;
+
+increment(5); // 6
+
+//  currying a 2-arg funtion
+// ❌ instead of
+const add = (a, b) => a + b;
+
+// ✅ currying
+const add => a => b => a + b
+
+const add2 = (2);
+add2(3) // 5
+
+// in one line
+add(2)(3) // 5
+
+// currying 3+ args (generator of functions)
+function func(a){
+  return function(b){
+    return function(c){
+      // do something with a, b, and c
+      return a * b * c
+    }
+  }
+}
+
+// usage
+const step1 = fn(2) // returns b => c => 2 * b + c
+const step2 = step(5) // returns c => 2 * 5 + c
+step2(3) // 2 * 5 + 3 = 13
+
+// one line
+fn(2)(5)(3) // 13
+```
+
+### Partial application & dependency injection
+
+### Continuations, chaining & the pyramid of doom
 
 ## Monads
 
