@@ -42,6 +42,10 @@ and that
 - Types are documentation
 - Your function's is true to its inputs
 
+3. Use static types for domain modelling and documentation
+
+- Types can contain business logic
+
 ### Functions are things => railway track
 
 - A function is a standalone thing, not attached to a class
@@ -136,6 +140,74 @@ type Society = {
 ## Functions as parameter
 
 - Functions as interfaces
+  - Parametize all the things. Meaning, don't hard code the values the function needs, pass to the function as params
+
+```js
+// ❌ hardcoded
+function myListBad(){
+  const numbers = [1,2,3]
+
+  numbers.forEach(() => {...})
+}
+
+// ✅ parametized => parametize only the data
+function myListGood(listOfNums){
+  listOfNums.forEach(() => {...})
+}
+
+myListGood([1,2,3])
+
+// ✅ parametized => parametize not only the data, but also the behavior
+// way generic
+function myListBetter(listOfNums, action){ // data + behavior as params
+  listOfNums.forEach((num) => action(num))
+}
+
+myListBetter([1,2,3], (num) => {
+    console.log(num)
+});
+```
+
+```js
+function product(value: number) {
+  let productResult = 1; // distinct
+
+  // common
+  for (let i = 1; i <= value; i++) {
+    productResult *= i; // distinct
+  }
+
+  return productResult;
+}
+
+function sum(value: number) {
+  let sumResult = 0;
+
+  for (let i = 1; i <= value; i++) {
+    sumResult += i;
+  }
+
+  return sumResult;
+}
+
+// How to simplify this?
+// identify what is common and what is different in them
+// we preserve the distinction and preserve what is common
+function productOrSum(value: number, operation: "product" | "sum") {
+  let result = operation === "product" ? 1 : 0;
+
+  for (let i = 1; i <= value; i++) {
+    if (operation === "product") {
+      result *= i;
+    } else {
+      result += i;
+    }
+  }
+
+  return result;
+}
+```
+
 - Partial application & dependency injection
 - Continuations, chaining & the pyramid of doom
 
