@@ -263,6 +263,33 @@ fn(2)(5)(3) // 13
 
 ### Partial application & dependency injection
 
+- We take a function that expects N arguments and "lock in" some of the upfront, returning a new function for the remaining args
+
+```js
+// manual currying => turn a two-arg fn into a chain of unary fns
+const add = (a) => (b) => a + b;
+
+const add5 = add(5); // b => 5 + b
+add5(3); // 5 + 3 => 8
+add(2)(4); // 2 + 4 => 6
+```
+
+- Partial application means pre-filling some arguments of a function now, so you get a new funciton that only needs the remaining arguments later
+  - customizing a function in advance
+
+```js
+function multiply(a, b) {
+  return a * b;
+}
+
+// partially apply with `a = 2`
+const double = multiply.bind(null, 2);
+
+double(5); // 10
+```
+
+> Use partial application when working with lists
+
 ### Continuations, chaining & the pyramid of doom
 
 ## Monads
@@ -275,5 +302,3 @@ fn(2)(5)(3) // 13
 - Functors
 
 ## Monoids
-
-<!-- 8:37 -->
