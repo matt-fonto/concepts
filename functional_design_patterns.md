@@ -289,8 +289,77 @@ double(5); // 10
 ```
 
 > Use partial application when working with lists
+> Use partial application to do dependency injection
+
+- What is dependency injection?
+  - When you pass the things a piece of code depends on _from the outside_, instead of having it create or find itself
+    - With DI: The function/class is handed its tools
+    - Without DI: The function/class builds its own tools
+  - Meaning, the code doesn't control how deps are created, it just receives them
 
 ### Continuations, chaining & the pyramid of doom
+
+- Continuation: "what happens next" in a program
+  - Continuation, on JS context, is called callbacks. On FP context, it's called continuation
+  - Instead of returning a result and letting the caller figure out the next step later, you pass the "next step" as a function
+  - The caller decides how to handle success, failure, or other outcomes
+    - Reduce exceptions
+  - Avoids hardcoded behavior inside functions
+  - Continuations are the basis of `callbacks`, `Promises`, and `async/await`
+
+```js
+// Without continuation
+function add(a, b) {
+  return a + b;
+}
+
+const sum = add(2, 4); // the calleter takes the result and decides what to do
+sum(); // 6
+
+// With continuation
+function add(a, b, continuation) {
+  continuation(a + b); // pass the result to the next step
+  // continuation is "what happens next" after we computer a + b
+}
+
+add(2, 4, (result) => {
+  console.log("sum is", result);
+});
+```
+
+```js
+function divide(top, bottom, ifZero, ifSuccess) {
+  if (bottom === 0) {
+    ifZero();
+  } else {
+    ifSuccess(Math.trunc(top / bottom));
+  }
+}
+
+divide(
+  10,
+  2,
+  () => console.log("not possible to divide by 0"), // ifZero
+  (quotient) => console.log(`quotient is ${q}`) // ifSuccess
+);
+```
+
+- JS callbacks are essentially continuations
+
+```js
+function fetchData(url, onError, onSuccess) {
+  fetch(url)
+    .then((res) => res.json())
+    .then(onSuccess) // continuation for success
+    .catch(onError); // continuation for error
+}
+
+fetchData(
+  "/data.json",
+  (err) => console.log("error", err),
+  (data) => console.log("data", data)
+);
+```
 
 ## Monads
 
