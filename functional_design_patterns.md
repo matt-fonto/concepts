@@ -363,7 +363,53 @@ fetchData(
 
 ## Monads
 
+- aka: chaining continuations
+
+  - similar to connecting `switches`
+
+- Chaining operations in a consistent manner
 - Error handling, Async
+
+```js
+// without monads
+function getUsername(user) {
+  if (user && user.name) {
+    return user.name.toUpperCase();
+  }
+
+  return null; // checking for null or undefined
+}
+
+// with a Maybe Monad
+class Maybe {
+  constructor(value) {
+    this.value = value;
+  }
+
+  static of(value) {
+    return new Maybe(value);
+  }
+
+  map(func) {
+    if (this.value === null || this.value === undefined) {
+      return Maybe.of(null);
+    }
+
+    return Maybe.of(func(this.value));
+  }
+
+  getOrElse(defaultValue) {
+    return this.value === null || this.value === undefined
+      ? defaultValue
+      : this.value;
+  }
+}
+
+console.log(Maybe.of({ name: "Matt" }).map(user) => user.name).map(name => name.toUpperCase()).getOrElse("Guest") // Mateus;
+console.log(Maybe.of(null).map(user) => user.name).map(name => name.toUpperCase()).getOrElse("Guest") // Guest;
+```
+
+> Use bind to chain error handlers
 
 ## Maps
 
