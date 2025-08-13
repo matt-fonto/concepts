@@ -413,7 +413,61 @@ console.log(Maybe.of(null).map(user) => user.name).map(name => name.toUpperCase(
 
 ## Maps
 
-- Dealing with wrapped data
-- Functors
+- In functional programming, `map` isn't just an array method, it's a higher-order function that:
+
+  - Applies a function to the value inside a container, producing a new container of the same type, without changing the structure
+
+### Functors: things that can be mapped over
+
+- Any data type that:
+  - wraps a value
+  - implements a `map` method that:
+    - takes function `f: A -> B`
+    - applies it to the wrapped value if possible
+    - returns a new function of the same type, wrapping the result
+
+```js
+[1, 2, 3].map((x) => x * 2); // [2, 4,6]
+```
+
+- Array is the container (functor)
+- `.map` applies the function to each inner value
+- Result is still array (same container type)
+- Functors in JS:
+  - arrays
+  - Promises
+
+```js
+const promiseWithNumber = Promise.resolve(5);
+
+const promiseWithString = promiseWithNumber.then((num) => toString(num));
+```
+
+### Creating custom Functors
+
+```js
+const objectWithNums = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+
+function mapObject(object, func) {
+  const mappedObject = {};
+
+  Object.entries(object).forEach(([key, value]) => {
+    mappedObject[key] = func(value);
+  });
+
+  return mappedObject;
+}
+
+const objectWithStrings = mapObject(objectWithNums, (num) => num + "");
+```
+
+#### Maybe Monad
+
+- Maybe is a very popular data structure in functional programming
+- It represents a value that may or may not exist
 
 ## Monoids
