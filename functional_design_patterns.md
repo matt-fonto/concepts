@@ -521,3 +521,29 @@ someFunctor.map((value) => {
 ```
 
 ## Monoids
+
+- You start with a bunch of things, and some way of combining them two at a time
+
+### Rules
+
+1. Rule I (closure): The resulf of combining two things is always another one of the things => 1 + 2 = 3
+
+- Converts pairwise operations into operations that work on lists
+
+```js
+1 + 2 + 3 + 4;
+
+const sum = [1, 2, 3, 4].reduce((acc, curr) => acc + curr, 0);
+console.log(sum);
+
+const letters = ["a", "b", "c", "d"].reduce((acc, curr) => acc + curr, "");
+console.log(letters);
+```
+
+2. Rule II (associativity): When combining two things, which pairwise combination you do first doesn't matter => 1 + 2 = 3 || 2 + 1 = 3
+
+- Since, it doesn't matter the order I do things, I get parellelization for free (divide and conque, parallelization, the task can be split)
+
+3. Rule III (Identity element): There is a special thing called `zero` such that when you combine any thing with `zero`, you get the original back => 0 + 1 = 1 || 0 + 9 = 9
+
+- If zero is missing, we call it a `subgroup`
