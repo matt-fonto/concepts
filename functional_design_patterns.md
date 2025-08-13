@@ -468,6 +468,56 @@ const objectWithStrings = mapObject(objectWithNums, (num) => num + "");
 #### Maybe Monad
 
 - Maybe is a very popular data structure in functional programming
-- It represents a value that may or may not exist
+- It represents a value that may or may not exist. Replacement for `null` or `undefined`
+
+```js
+class Maybe {
+  constructor(value) {
+    this.value = value;
+  }
+
+  static just(value) {
+    if (value === null || value === undefined) {
+      throw new Error("Can't construct a value from null or undefined");
+    }
+
+    return new Maybe(value);
+  }
+
+  static nothing() {
+    return new Maybe(null);
+  }
+
+  map(fn) {
+    if (this.value === null) {
+      return this;
+    }
+
+    return new Maybe(fn(value));
+  }
+}
+
+const maybeNumber = Maybe.just(5);
+const maybeString = maybeNumber.map(numberToString);
+const numberMaybe = Maybe.just(null);
+const stringMaybe = numberMaybe.map(numberToString);
+```
+
+### Functors Laws
+
+1. If we take an identity function and we put it inside a map method, this method will return our data structure unchanged
+
+- Rather, it will return a new data structure, but with the same shape as the previous one
+
+2. Mapping two functions one after the other, should return the same value as running those two functions once inside a map
+
+```js
+someFunctor.map(firstFn).map(secondFn);
+
+someFunctor.map((value) => {
+  const x = firstFn(value);
+  return secondFn(x);
+});
+```
 
 ## Monoids
