@@ -59,3 +59,26 @@
   - When forced to thing beyond our first idea, usually the second idea is better
 - High-level design isn't as time-expensive, therefore, we're talking about 1-2% of the total time to build the system. The trade-off is worth it
   - And a good design gives you way more that 1-2%
+- If you take one idea, in design, and push it too far, you'll likely end up in a bad place
+  - Balance them off. You learn from experience
+
+### Deep vs Shallow Modules
+
+- How do we eliminate or manage complexity?
+- Complexity of the interface vs. Functionality in the Module
+
+- Deep: Simple interface with robust functionality
+  - It gives us leverage against complexity
+  - No cognitive load
+  - Inside the module, there's a lot going on that the "user" doesn't need to be aware of
+  - Ideal: Most functionality possible for the simplest possible interface
+- Shallow: Complext interface with poor functionality
+  - It doesn't doo much hiding
+
+### Error Handling
+
+- Error handling is a big source of complexity
+- Where we find the weird, special cases we have to deal with
+- How can we reduce the impact error handling has in complexity?
+- Every exception you throw imposes complexity on the user of your class
+  - Reduce the number of exception
