@@ -93,3 +93,22 @@
 - Design from the perspective of who's using it
   - Empathy has a strong weight when developing software
   - Many of the ideas we use in computer systems have strong analogies in social systems
+  - The hardest parts in software development is the people, not the computer, nor the code
+    - Miscommunication
+    - No empathy
+    - Conflicts
+
+## Design Reviews
+
+- Trade offs
+- Multiple minds working together on the same problem
+- Even though we don't want to get caught on analysis paralysis, it's important to take multiple perspectives
+  - Whiteboard
+  - Meetings are extremely good in providing people with an environment to talk past each other, repeat the same arguments and counter arguments, going round and round, without actually getting anywhere.
+    - In this context, use the whiteboard
+      - List the for and against
+      - Provide any argument you think it's reasonable
+      - Every argument goes in the board, but you're not allowed to repeat an argument that is already on the board
+      - No one can stop you from putting your argument on the board
+      - Once the arguments are registered, this naturally leads to people not having anything else to say
+      - Once this is done, do a voting to select the best alternative
