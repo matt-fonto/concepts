@@ -547,3 +547,11 @@ console.log(letters);
 3. Rule III (Identity element): There is a special thing called `zero` such that when you combine any thing with `zero`, you get the original back => 0 + 1 = 1 || 0 + 9 = 9
 
 - If zero is missing, we call it a `subgroup`
+
+- Endomorphism: Functions with the same type of input and output (they are monoids)
+
+### Monads vs. Monoids
+
+Monad laws: just the monoid defition in disguise
+
+- Closure, associativity, identity
