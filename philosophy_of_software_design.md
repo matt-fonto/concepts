@@ -28,3 +28,34 @@
 - What is the most important idea in computer science? => **Decomposition**
 - How do we take large, complicated problems and break them down?
   - Implementation: going about the invidual pieces
+- Design is about managing complexity
+
+### Approaches
+
+- There's no specific recipe
+- Back-and-forth process
+- Top-down: You start from the whole, and try to break it into different pieces and relatively independent components
+- Bottom-up: Less experienced engineers or people who are in a domain they are not familiar with
+  - I need this functionality. Then, you pick another piece and build it. Then, you try to put the pieces together
+
+### Complexity
+
+1. Design that can completely eliminate complexity
+
+- Eliminate the need to work on special cases
+- Best design on complexity
+- We can't eliminate all complexity
+
+2. Modular design, we try to hide complexity
+
+- You break the complexity down into smaller, independent components
+- Allows maintenance to "hide" complexity, so when you change something, you reduce the amount of information you need to be aware
+
+### Design Twice
+
+- What would be your second take on this problem?
+- How would you approach this problem differently?
+- Sometimes, our first idea isn't the ideal one
+  - When forced to thing beyond our first idea, usually the second idea is better
+- High-level design isn't as time-expensive, therefore, we're talking about 1-2% of the total time to build the system. The trade-off is worth it
+  - And a good design gives you way more that 1-2%
