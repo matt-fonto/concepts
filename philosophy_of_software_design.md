@@ -82,3 +82,14 @@
 - How can we reduce the impact error handling has in complexity?
 - Every exception you throw imposes complexity on the user of your class
   - Reduce the number of exception
+- Defining errors out of existence is like a spice. If you use it well, it improves your dish. If you use it too much, it can ruin it.
+- Identifying exceptions and possible edge cases it's not part of our mind, usually, when designing the software. Normally, we deal with it tactically, not strategically
+- When designing a module, try to think it from the callers standpoint.
+  - What will the caller need?
+  - What errors/exceptions might the caller face?
+- A good designer is able to think about things from different point of views
+  - Detail of the modules
+  - The perspective of the user of that module
+- Design from the perspective of who's using it
+  - Empathy has a strong weight when developing software
+  - Many of the ideas we use in computer systems have strong analogies in social systems
