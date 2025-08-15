@@ -112,3 +112,14 @@
       - No one can stop you from putting your argument on the board
       - Once the arguments are registered, this naturally leads to people not having anything else to say
       - Once this is done, do a voting to select the best alternative
+
+### Design Approaches
+
+- Design permeates the whole development process
+- We should always be thinking about design
+- Even though we won't be able to predict the consequences of our design decisions, we should do, at least, a bit of design upfront.
+
+  - Do some design and have some hypothesis to work from
+
+- Up-front
+- Meanwhile
