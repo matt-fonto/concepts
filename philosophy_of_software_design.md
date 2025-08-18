@@ -2,6 +2,25 @@
 
 - Software design is where developers will spend most of their time
 
+## Main insights of the book
+
+### 1. Complexity is the biggest enemy
+
+- Complexity makes the code harder to read, test, debug and extend
+  - The whole book is about recognizing, fighting, and managing complexity
+  - What is complexity? "Anything related to structure that makes code harder to work with?"
+
+### 2. Tactical vs. Strategic programming
+
+- Tactical: "just get it working". Faster short-term, but complexity accumulates
+- Strategic: "see the bigger picture". Invest in clean design, refactoring and better abstractions. Costs more now, but pays off long-term
+
+### 3. Deep vs. Shallow Modules
+
+- Deep module: substantial functionality + simple interface
+  - The key to scalable software
+- Shallow module: little functionality + complex interface
+
 ## Industry vs. Academia
 
 - Are they that different?
@@ -121,5 +140,10 @@
 
   - Do some design and have some hypothesis to work from
 
+- Revise, as soon as you face problems
+- Building software is like going from point A to point B, the only thing the terrain is unknown
+  - How many unknown unknows are there?
+  - Are you in domain you've been before?
+  - New environments are too hard to predict
 - Up-front
 - Meanwhile
