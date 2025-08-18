@@ -176,12 +176,24 @@
 
 ## Clean code vs. A philosophy of software design
 
-| concept   | clean code                                      | a philosophy of software design            |
-| --------- | ----------------------------------------------- | ------------------------------------------ |
-| methods   | should be small                                 | should be deep                             |
-| focus     | shortness                                       | depth                                      |
-| comments  | avoid when possible, code should explain itself | essential for explaning why                |
-| main goal | code readability through small methods          | managing and reducing long-term complexity |
+| concept   | clean code                                      | a philosophy of software design                                                              |
+| --------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| methods   | should be small                                 | should be deep                                                                               |
+| focus     | shortness                                       | depth                                                                                        |
+| comments  | avoid when possible, code should explain itself | there's lots of stuff we can't get from the code. Comments are essential for explaning why   |
+| main goal | code readability through small methods          | managing and reducing long-term complexity                                                   |
+| tdd       | highly recommended                              | Even though tests should be written, TDD works against design. It makes you think tactically |
 
 - It's not the method's length, but depth. Are we hiding complexity? Clean code takes a good concept and takes it too much to the extreme
 - On clean code, shortness was taken as an absolute good with no limits on it. The shorter, the better. Multiplication of interfaces and methods
+- Overdecoposing can become a problem. You can make something deeper by combining similar modules
+- Instead of having 10 solutions for one problem, how can we have 1 solution that solves 10 problems?
+- You want to think in a big enough chunk that you can consider trade-offs, and TDD narrows the view
+  - General-purpose solution
+  - Avoid specialization as much as you can
+  - TDD can be helpful when fixing a bug
+    - Write a test that will detect the bug and fix it
+      - Another approach: write the fix -> write the test to check the fix -> remove (comment out) the fix -> tests should fail -> add back the fix
+- Comments should tell you things that aren't obvious from the code
+  - Comments must not repeat the code, but inform something behind it
+  - Comments are very helpful in the interfaces
