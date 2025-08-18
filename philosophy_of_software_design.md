@@ -21,6 +21,19 @@
   - The key to scalable software
 - Shallow module: little functionality + complex interface
 
+### 4. Information hiding & Abstraction
+
+- Don't expose unnecessary details. Keep implementation private
+- Abstractions should provide a simpler conceptual model than the raw underlying system
+
+### 5. Design it twice
+
+- Try more than one design before commiting. Trade-offs appear more clearly by doing so
+
+### 6. Working code isn't enough
+
+- Good design is about making future work easier, not just current work possible
+
 ## Industry vs. Academia
 
 - Are they that different?
