@@ -34,6 +34,17 @@
 
 - Good design is about making future work easier, not just current work possible
 
+### Summary
+
+1. Fight complexity constantly, don't let it build
+2. Prefer strategic over tactical fixes
+3. Build deep modules, by hiding complexity behind simpler interfaces
+4. Don't leak details, expose only what callers need, keep internals private
+5. Comments explain why, not what: Code shows what, comments should show intent
+6. Define errors out of existence: design APIs that minimize special cases and failure handling
+
+> simplify, hide details, go deep, and think long-term
+
 ## Industry vs. Academia
 
 - Are they that different?
