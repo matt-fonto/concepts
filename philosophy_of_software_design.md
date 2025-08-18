@@ -170,4 +170,18 @@
   - Are you in domain you've been before?
   - New environments are too hard to predict
 - Up-front
+- We learn by making mistakes
+  - Education is about creating a safe-space where people can make mistakes and learn from them
 - Meanwhile
+
+## Clean code vs. A philosophy of software design
+
+| concept   | clean code                                      | a philosophy of software design            |
+| --------- | ----------------------------------------------- | ------------------------------------------ |
+| methods   | should be small                                 | should be deep                             |
+| focus     | shortness                                       | depth                                      |
+| comments  | avoid when possible, code should explain itself | essential for explaning why                |
+| main goal | code readability through small methods          | managing and reducing long-term complexity |
+
+- It's not the method's length, but depth. Are we hiding complexity? Clean code takes a good concept and takes it too much to the extreme
+- On clean code, shortness was taken as an absolute good with no limits on it. The shorter, the better. Multiplication of interfaces and methods
