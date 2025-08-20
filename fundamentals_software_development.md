@@ -62,3 +62,13 @@ if(user.canMakePurchase()){...}
 
 - UI: React functional components (hooks, state, rendering)
 - Domain/business layer: entities, rules, workflows (functions or classes)
+
+## 3. Domain Driven Design
+
+Focuses on developing a software that bridges development and domain experts
+
+https://medium.com/@ruxijitianu/summary-of-the-domain-driven-design-concepts-9dd1a6f90091
+
+<!-- video 30:56 -->
+
+### Concepts
