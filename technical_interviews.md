@@ -159,4 +159,7 @@ function merge(left, right) {
 
   return result.concat(left.slice(i)).concat(right.slice(j));
 }
+
+const arr = [38, 27, 43, 3, 9, 82, 10];
+mergeSort(arr);
 ```
