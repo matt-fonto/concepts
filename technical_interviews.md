@@ -21,3 +21,60 @@
 - O(<complexity>): time and space
 - Identifies the efficiency of any given algorithm
 - Worst-case scenario is considered
+
+### Time
+
+### 1. O(1) | Constant
+
+Operation doesn't depend on input size
+
+- 10 or 10 million elements, the operation always takes the same amount of time
+- Operations:
+  - Access array element by index -> arr[0]
+  - Lookup key in hash map -> obj[key]
+  - Simple arithmetic or assignment
+
+```js
+// O(1) examples
+
+const numbers = [1, 2, 3, 4];
+numbers[2]; // array by index
+
+const user = {
+  id: 1,
+  name: "Matt",
+  age: 29,
+};
+user.name; // user[name] lookup obj by key
+
+const a = 5;
+let b = a * 3; // arithmetic operations
+```
+
+### 2. O(n) | Linear
+
+The operations grow proportionally to the input size
+
+- Operations:
+  - Looping through array
+  - Searching unsorted list
+  - Applying operation per element
+
+```js
+// O(n) examples
+
+const numbers = [1, 2, 3, 4];
+
+// loop through array
+for (let i = 0; i < numbers.length; i++) {
+  console.log(numbers[i]);
+}
+
+function contains(arr, value) {
+  for (let element of arr) {
+    if (element === value) {
+      return true;
+    }
+  }
+}
+```
