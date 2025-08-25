@@ -163,3 +163,39 @@ function merge(left, right) {
 const arr = [38, 27, 43, 3, 9, 82, 10];
 mergeSort(arr);
 ```
+
+#### 5. O(n^2): Quadratic
+
+- Algorithm grows proportional to the square of input size
+- Meaning:
+
+  - input doubles -> operation grows 4x (2^2 = 4)
+  - input triples -> operation grows 6x (3^2 = 6)...
+
+- Operations:
+  - Nested loops over the same dataset
+  - Comparing each element with every other element (no divide and conquer)
+  - Brute force solutions
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+
+for (let i = 0; i < numbers.length; i++) {
+  for (let j = 0; j < numbers.length; j++) {
+    console.log(numbers[i], numbers[j]);
+  }
+}
+```
+
+```js
+function bubbleSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // swap the elements
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+}
+```
