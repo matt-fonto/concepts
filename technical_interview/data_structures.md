@@ -1,35 +1,48 @@
 # Data Structures
 
 - A way to organize and store data in a computer's memory
-- It defines how data is arranged
-
-  - Linear: elements in sequence (one after another)
-    - Array
-    - Stack
-    - Queue
-    - Linked lists
-  - Hierarchical: elements in a tree, with one root and branching children
-    - Binary tree: each node has <= 2 children
-    - Binary Search Tree (BST): orderer tree for searching
-    - Heaps: min/max priority tree
-    - Tries: string/prefix tree
-  - Graph: data as nodes (vertices) + edges (connections)
-    - Can be: directed/undirected, weighted/unweighted
-  - Hash-based: stored in a way that allows constant-time lookup using hash functions
-    - Hash map / Object / Dictionary
-    - Hash set
-
 - Provides operations for `___` data
+
   - accessing (GET)
   - inserting (CREATE)
   - modifying (UPDATE)
   - deleting (DELETE)
 
-###
+- It defines how data is arranged
 
-### Core Data Structures
+  - There are two main types:
 
-1. Array
+    - Primitive: boolean, int, etc.
+    - Non-primitive: more complex data structures (arrays, objects, linked lists, etc)
+
+### Non Primitive Data Structures
+
+- Linear: elements in sequence (one after another)
+
+  - Array
+  - Stack
+  - Queue
+  - Linked lists
+
+- Hierarchical: elements in a tree, with one root and branching children
+
+  - Binary tree: each node has <= 2 children
+  - Binary Search Tree (BST): orderer tree for searching
+  - Heaps: min/max priority tree
+  - Tries: string/prefix tree
+
+- Graph: data as nodes (vertices) + edges (connections)
+
+  - Can be: directed/undirected, weighted/unweighted
+
+- Hash-based: stored in a way that allows constant-time lookup using hash functions
+
+  - Hash map / Object / Dictionary
+  - Hash set
+
+## Core Data Structures
+
+### 1. Array
 
 - Ordered list, indexed by number -> `arr[4]`
 - Good for:
@@ -44,7 +57,18 @@ arr.push(40); // O(1)
 arr.unshift(4); // O(n) shifts everything
 ```
 
-2. Stack (LIFO)
+#### Operations
+
+- Access by index: O(1)
+- Search: O(n) -> may need to check every element
+- Insert:
+  - end: O(1) -> arr.push(element)
+  - beginning: O(n) -> shifts all elements one position -> arr.unshift(element)
+- Delete:
+  - end: O(1)
+  - beginning: O(n) -> all elements shift left -> arr.shift()
+
+### 2. Stack (LIFO)
 
 - Last in, First out
 - Good for:
@@ -62,7 +86,7 @@ stack.push(2);
 stack.pop(); //2
 ```
 
-3. Queue (FIFO)
+### 3. Queue (FIFO)
 
 - First in, First out
 - Good for:
