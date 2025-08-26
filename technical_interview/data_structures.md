@@ -60,13 +60,40 @@ arr.unshift(4); // O(n) shifts everything
 #### Operations
 
 - Access by index: O(1)
-- Search: O(n) -> may need to check every element
+- Search:
+  - unsorted: O(n) -> we need to look to all the elements
+  - sorted: O(log n) -> we remove half entries on each operation
+    - if element is bigger than middle, cut all the left elements. Else, cut all the right elements
 - Insert:
   - end: O(1) -> arr.push(element)
   - beginning: O(n) -> shifts all elements one position -> arr.unshift(element)
 - Delete:
   - end: O(1)
   - beginning: O(n) -> all elements shift left -> arr.shift()
+
+#### Pros and Cons
+
+- Pros
+
+  - Simplest non-primitive data structure
+  - Direct access by index
+  - Simple iteration
+  - Append at end
+
+- Cons
+  - Insertion/deletion (non-end): costly `O(n)` because of shifting elements
+  - Fixes size (in low level languages): resizing can be expensive
+  - Maintaining order
+
+> Arrays are good for fast indexed access and sequential iteration, but bad for dynamic updates (unless done at the end)
+
+#### Examples
+
+1. Two sum
+
+```js
+
+```
 
 ### 2. Stack (LIFO)
 
@@ -108,3 +135,5 @@ queue.push("task2");
 
 queue.shift(); // O(1) task1
 ```
+
+<!-- 29:44 -->
