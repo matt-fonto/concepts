@@ -14,17 +14,22 @@ function twoSum(nums, target) {
   const numIndices = {};
 
   for (let i = 0; i < nums.length; i++) {
-    const complement = target - nums[i];
+    const complement = target - nums[i]; // we subtract the target by the current iteration
+    // 2 - 9 = 7
+    // 7 - 9 = 2
 
+    // if the component already exists...
     if (complement in numIndices) {
+      // return the complement index + current iteration
       return [numIndices[complement], i];
     }
 
+    // if it doesn't exist... add the specific value and its index to the hash map
     numIndices[nums[i]] = i;
   }
 }
 
-const nums = [2, 7, 11, 15];
-const target = 9;
+const nums = [2, 7, 11, 15, 8];
+const target = 23;
 
 console.log(twoSum(nums, target));
