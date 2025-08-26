@@ -95,7 +95,29 @@ arr.unshift(4); // O(n) shifts everything
 
 ```
 
-### 2. Stack (LIFO)
+### 2. Linked List
+
+- Nodes linked by pointers
+  - Each node stores a value + a reference to the next (and sometimes the previous)
+- Variants:
+  - Singly linked list -> nodes point forward
+  - Doubly linked list -> nodes point forward and backward
+  - Circular linked list -> last node connects back to head
+
+```js
+class Node {
+  constructor(value) {
+    this.value = value; // value stored in the node
+    this.next = null; // reference to the next
+  }
+}
+
+const head = new Node(10);
+head.next = new Node(20);
+head.next.next = new Node(30); // 10 -> 20 -> 30
+```
+
+### 3. Stack (LIFO)
 
 - Last in, First out
 - Good for:
@@ -113,7 +135,7 @@ stack.push(2);
 stack.pop(); //2
 ```
 
-### 3. Queue (FIFO)
+### 4. Queue (FIFO)
 
 - First in, First out
 - Good for:
