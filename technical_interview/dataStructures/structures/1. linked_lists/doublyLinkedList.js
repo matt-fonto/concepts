@@ -47,7 +47,25 @@ class DoublyLinkedList {
     this.length++;
   }
 
-  // removeLast
+  removeLast() {
+    if (!this.tail) {
+      return null;
+    }
+
+    const removed = this.tail;
+
+    // if the linked list had only one node, delete it
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.tail = removed.prev; // tail.prev becomes the before last element
+      this.tail.next = null; // before
+    }
+
+    this.length--;
+    return removed.value;
+  }
 
   // removeFirst
 
