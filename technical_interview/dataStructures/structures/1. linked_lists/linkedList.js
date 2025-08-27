@@ -105,6 +105,40 @@ class LinkedList {
 
     console.log(values.join(" -> "));
   }
+
+  insertAt(index, value) {
+    if (index < 0 || index > this.length) {
+      return null;
+    }
+
+    const newNode = newNode(value);
+
+    // insert at beginning
+    if (index === 0) {
+      this.append(value);
+    }
+
+    // insert at end
+    if (index === this.length) {
+      this.prepend(value);
+    }
+
+    // insert in middle
+    const current = this.head;
+    let prev = null;
+    let i = 0;
+
+    while (i < index) {
+      prev = current;
+      current = current.next;
+      i++;
+    }
+
+    prev.next = newNode;
+    newNode.next = current;
+
+    this.length++;
+  }
 }
 
 const list = new LinkedList();
