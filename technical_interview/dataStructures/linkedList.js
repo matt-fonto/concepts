@@ -7,6 +7,7 @@ create a linked list with
         - append
         - prepend
         - removeFirst
+        - removeLast => on a singly linked list, remove last is tricky, because we don't have a pointer to the previous node
         - find
         - print
 */
@@ -60,4 +61,60 @@ class LinkedList {
 
     this.length++;
   }
+
+  removeFirst() {
+    if (!this.head) {
+      return null;
+    }
+
+    const removed = this.head;
+    this.head = this.head.next; // the head now becomes what was previously the next of the head
+
+    // if list became empty
+    if (!this.head) {
+      this.tail = null;
+    }
+
+    this.length--;
+    return removed.value;
+  }
+
+  find(value) {
+    let current = this.head; // we begin at the head
+
+    while (current) {
+      if (current.value === value) {
+        return current;
+      }
+
+      current = current.next; // while we haven't found it, keep updating the current
+    }
+
+    // if none is found, return null
+    return null;
+  }
+
+  print() {
+    const values = [];
+    let current = this.head;
+
+    while (current) {
+      values.push(current.value);
+      current = current.next;
+    }
+
+    console.log(values.join(" -> "));
+  }
 }
+
+const list = new LinkedList();
+list.append(10); // add end
+list.append(20); // add end
+list.prepend(5); // add beg.
+
+list.print(); // 5 → 10 → 20
+
+console.log(list.find(10)); // Node { value: 10, next: Node { value: 20, next: null } }
+
+list.removeFirst();
+list.print(); // 10 → 20

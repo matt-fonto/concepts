@@ -121,6 +121,32 @@ head.next = new Node(20);
 head.next.next = new Node(30); // 10 -> 20 -> 30
 ```
 
+#### Operations
+
+| Operation                | Time complexity                | Why                                              |
+| ------------------------ | ------------------------------ | ------------------------------------------------ |
+| Access by index          | O(n)                           | must traverse the linked list                    |
+| Search                   | O(n)                           | must traverse the whole thing                    |
+| Insert at head (prepend) | O(1)                           | just rewire head -> new node                     |
+| Insert at tail (append)  | O(n), but if track `tail` O(1) | with tail, just change it, without must traverse |
+| Insert in middle         | O(n)                           | -                                                |
+| Delete at head           | O(1)                           | just rewire head.next to head                    |
+
+#### Pros and cons
+
+Pros
+
+- Dynamic size
+- Fast insertion/deletion at head
+- Efficient reordering
+- Good for queues/stacks implementations
+
+Cons
+
+- Slow access/search
+- Higher memory usage
+- Extra pointer complexity
+
 ### 3. Stack (LIFO)
 
 - Last in, First out
