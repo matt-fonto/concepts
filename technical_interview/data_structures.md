@@ -100,9 +100,13 @@ arr.unshift(4); // O(n) shifts everything
 - Nodes linked by pointers
   - Each node stores a value + a reference to the next (and sometimes the previous)
 - Variants:
+
   - Singly linked list -> nodes point forward
+    - When we get to `null`, linked list ended
   - Doubly linked list -> nodes point forward and backward
   - Circular linked list -> last node connects back to head
+
+- Linear, but dynamic data structure
 
 ```js
 class Node {
@@ -112,7 +116,7 @@ class Node {
   }
 }
 
-const head = new Node(10);
+const head = new Node(10); // root
 head.next = new Node(20);
 head.next.next = new Node(30); // 10 -> 20 -> 30
 ```
