@@ -4,8 +4,8 @@
 // - append
 //  - prepend
 // - removeFirst
-// - removeLast
 // - print
+// - find
 
 class Node {
   constructor(value) {
@@ -59,10 +59,45 @@ class LinkedList {
       newNode.next = this.head; // point new node to old head
       this.head = newNode; // point the head to the new node
     }
+
+    this.length++;
   }
 
-  // removeFirst
-  removeFirst() {}
+  // removeFirst => return it
+  removeFirst() {
+    // [(head) 10(next:20), 20(next:30), 30(next.null)(tail)]
+    // removeFirst()
+    // this.head = this.head.next
 
-  // removeLast
+    if (!this.head) {
+      return null;
+    }
+
+    const removed = this.head;
+    this.head = removed.next; // the next of the removed, becomes the head
+    this.length--;
+
+    // if the list became empty, reset tail
+    if (!this.head) {
+      this.tail = null;
+    }
+
+    return removed.value;
+  }
+
+  //find
+  find(value) {
+    // [(head) 10(next:20), 20(next:30), 30(next.null)(tail)]
+    let current = this.head; // start from the first node
+
+    while (current) {
+      if (current.value === value) {
+        return current;
+      }
+
+      current = current.next; // step ahead
+    }
+
+    return null;
+  }
 }
