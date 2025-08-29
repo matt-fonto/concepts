@@ -85,6 +85,39 @@ class LinkedList {
     return removed.value;
   }
 
+  removeLast() {
+    // [(head) 10(next:20), 20(next:30), 30(next.null)(tail)] => we need somehow to connect the tail if null to prev
+
+    // if it's empty
+    if (!this.head) {
+      return;
+    }
+
+    // if it's 1 item
+    if (this.length === 1) {
+      const removed = this.tail;
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return removed.value;
+    }
+
+    let current = this.head;
+    let prev = null;
+
+    // we need to walk until the end
+    while (current) {
+      current = current.next;
+      prev = current;
+    }
+
+    prev.next = null; // clean up the chain to the last item
+    this.tail = prev;
+    this.length--;
+
+    return current.value; // value of the removed node
+  }
+
   //find
   find(value) {
     // [(head) 10(next:20), 20(next:30), 30(next.null)(tail)]
@@ -99,5 +132,19 @@ class LinkedList {
     }
 
     return null;
+  }
+
+  print() {
+    const result = [];
+    let current = this.head;
+
+    while (current) {
+      result.push(current.value);
+
+      // step ahead
+      current = current.next;
+    }
+
+    return result;
   }
 }
