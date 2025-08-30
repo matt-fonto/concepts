@@ -148,3 +148,6 @@ class LinkedList {
     return result;
   }
 }
+
+// so we can import it somewhere
+module.exports = { Node, LinkedList };
