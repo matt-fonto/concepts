@@ -1,7 +1,7 @@
 ### Linked List
 
-1. [] Build a singly linked list
-2. [] Reverse a linked list
+1. [x] Build a singly linked list
+2. [x] Reverse a linked list
 3. [] Find the middle of a linked list
 4. [] Build a doubly linked list
 5. [] Build a circular linked list
