@@ -108,10 +108,48 @@ Extra credit, for those who really want to go above and beyond
 
 ### Boosters
 
-#### 1. Brute Force optimimization
+If boundary & trigger thinking don't point you to the right approach, start with the brute force...
 
-If boundary & trigger thinking don't point you to the right approach, start with the brute force
+#### 1. Brute Force optimimization
 
 - Preprocessing pattern
 - Data structure pattern
 - Skip unnecessary work
+
+---
+
+If you need a new approach...
+
+#### 2. Hunt for properties
+
+- DIY
+- Case analysis
+- Reverse engineer the output pattern
+- Sketch a diagram
+- Reframe the problem
+
+---
+
+If you can't find any approach...
+
+#### 3. Decrease the difficulty
+
+- Tackle an easier version
+- Break down the problem
+
+---
+
+Solution might be in your blindspot...
+
+### 4. Cycle through the catalog
+
+- Think: Could `____` be useful?
+
+---
+
+If you're still stuck...
+
+#### 5. Articulate your blocker
+
+- Don't say "hint"
+- Show your work
